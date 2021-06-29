@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import com.example.beragenda.R
 import com.example.beragenda.fragment.SignInFragment
+import kotlin.concurrent.fixedRateTimer
 
 class SignInSignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,4 +24,5 @@ class SignInSignUpActivity : AppCompatActivity() {
         }
 
     }
+
 }
