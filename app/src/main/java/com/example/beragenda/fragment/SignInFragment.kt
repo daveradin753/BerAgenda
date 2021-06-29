@@ -34,6 +34,14 @@ class SignInFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            reload()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -102,7 +110,8 @@ class SignInFragment : Fragment() {
     }
 
     private fun reload() {
-
+        val intent = Intent(this.context, HomePageActivity::class.java)
+        startActivity(intent)
     }
 
     companion object {
