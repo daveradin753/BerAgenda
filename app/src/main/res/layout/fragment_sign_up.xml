@@ -36,9 +36,10 @@
             android:layout_marginTop="156dp"
             android:layout_marginEnd="24dp"
             android:text="Sign Up"
+            android:fontFamily="@font/ruluko"
             android:textColor="@color/white"
             android:textSize="21dp"
-            android:textStyle="italic"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
