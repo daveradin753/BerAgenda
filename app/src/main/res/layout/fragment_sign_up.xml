@@ -24,24 +24,24 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/logo_temp"
+            android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
             android:layout_marginEnd="24dp"
-            android:text="Sign Up"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/ruluko"
+            android:text="Sign Up"
             android:textColor="@color/white"
             android:textSize="21dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2" />
 
         <EditText
             android:id="@+id/etSignupEmailUser"
@@ -50,8 +50,8 @@
             android:layout_marginTop="80dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
-            android:inputType="textEmailAddress"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -63,8 +63,8 @@
             android:layout_marginTop="16dp"
             android:drawableStart="@drawable/icons8_password_64px"
             android:drawablePadding="18dp"
-            android:inputType="textPassword"
             android:hint="Password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupEmailUser" />
@@ -76,10 +76,10 @@
             android:layout_marginTop="52dp"
             android:background="@drawable/signin_button_style"
             android:text="Sign Up"
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupPasswordUser" />
@@ -88,9 +88,9 @@
             android:id="@+id/tvForgotYourPasswordSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Forgot Your Password?"
             android:textColor="@color/black"
-            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
