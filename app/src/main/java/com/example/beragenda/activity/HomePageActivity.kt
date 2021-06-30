@@ -14,6 +14,8 @@ class HomePageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_page)
 
         setSupportActionBar(findViewById(R.id.homeToolbar))
+
+        val test: String
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
