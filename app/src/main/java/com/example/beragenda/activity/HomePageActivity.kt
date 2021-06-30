@@ -15,7 +15,7 @@ class HomePageActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.homeToolbar))
 
-        val test: String
+        val test: Int
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
