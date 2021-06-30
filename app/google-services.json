@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445085081772",
+    "project_id": "beragenda-8f54a",
+    "storage_bucket": "beragenda-8f54a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445085081772:android:6b765e8aaca59b8e3ebf09",
+        "android_client_info": {
+          "package_name": "com.example.beragenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445085081772-1obne9r1ts5hcvaphndfh2emdvt71q2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEIs65XPI8wldVtA6Hv9vz1LiKQNYGxdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445085081772-1obne9r1ts5hcvaphndfh2emdvt71q2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
