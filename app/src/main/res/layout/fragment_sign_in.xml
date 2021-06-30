@@ -24,23 +24,23 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:src="@drawable/app_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
             android:text="Sign In"
             android:textColor="@color/white"
             android:textSize="21dp"
             android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="@+id/imageView3" />
 
         <EditText
             android:id="@+id/etSigninEmailUser"
@@ -49,8 +49,8 @@
             android:layout_marginTop="80dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
-            android:inputType="textEmailAddress"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -62,8 +62,8 @@
             android:layout_marginTop="16dp"
             android:drawableStart="@drawable/icons8_password_64px"
             android:drawablePadding="18dp"
-            android:inputType="textPassword"
             android:hint="Password"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
