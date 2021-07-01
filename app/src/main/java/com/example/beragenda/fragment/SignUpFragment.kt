@@ -25,7 +25,7 @@ import org.w3c.dom.Text
 
 class SignUpFragment : Fragment() {
 
-    private lateinit var tvForgotYourPasswordSignUp: TextureView
+    private lateinit var tvForgotYourPasswordSignUp: TextView
     private lateinit var etSignUpEmailUser: EditText
     private lateinit var etSignUpPasswordUser: EditText
     private lateinit var btnSignUp: Button
