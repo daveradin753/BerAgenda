@@ -29,6 +29,7 @@ class SignUpFragment : Fragment() {
     private lateinit var etSignUpEmailUser: EditText
     private lateinit var etSignUpPasswordUser: EditText
     private lateinit var btnSignUp: Button
+    private lateinit var btnBackSignUp : Button
     private lateinit var auth: FirebaseAuth
     private var signInFragment= SignInFragment()
 
@@ -46,8 +47,10 @@ class SignUpFragment : Fragment() {
         etSignUpEmailUser = view.findViewById(R.id.etSignupEmailUser)
         etSignUpPasswordUser = view.findViewById(R.id.etSignupPasswordUser)
         btnSignUp = view.findViewById(R.id.btnSignUp)
+        btnBackSignUp = view.findViewById(R.id.btnBackSignUp)
 
         val ForgotPasswordFragment = ForgotPasswordFragment()
+        val SignInFragment = SignInFragment()
         val fragmentManager = fragmentManager
 
         tvForgotYourPasswordSignUp.setOnClickListener {
@@ -75,6 +78,14 @@ class SignUpFragment : Fragment() {
                 return@setOnClickListener
             }
             signUp(email, password)
+        }
+
+        btnBackSignUp.setOnClickListener {
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.flSigninSignup, SignInFragment)
+                addToBackStack(null)
+                commit()
+            }
         }
     }
 
