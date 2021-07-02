@@ -43,7 +43,7 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvForgotYourPasswordSignUp = view.findViewById(R.id.tvForgotYourPasswordSignup)
+//        tvForgotYourPasswordSignUp = view.findViewById(R.id.tvForgotYourPasswordSignup)
         etSignUpEmailUser = view.findViewById(R.id.etSignupEmailUser)
         etSignUpPasswordUser = view.findViewById(R.id.etSignupPasswordUser)
         btnSignUp = view.findViewById(R.id.btnSignUp)
@@ -53,13 +53,13 @@ class SignUpFragment : Fragment() {
         val SignInFragment = SignInFragment()
         val fragmentManager = fragmentManager
 
-        tvForgotYourPasswordSignUp.setOnClickListener {
-            fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.flSigninSignup, ForgotPasswordFragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
+//        tvForgotYourPasswordSignUp.setOnClickListener {
+//            fragmentManager?.beginTransaction()?.apply {
+//                replace(R.id.flSigninSignup, ForgotPasswordFragment)
+//                addToBackStack(null)
+//                commit()
+//            }
+//        }
 
         btnSignUp.setOnClickListener {
             val email: String = etSignUpEmailUser.text.toString()

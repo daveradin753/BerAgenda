@@ -38,7 +38,8 @@
             android:text="Sign In"
             android:textColor="@color/white"
             android:textSize="21dp"
-            android:textStyle="italic"
+            android:textStyle="bold"
+            android:fontFamily="@font/ruluko"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="@+id/imageView3" />
 
@@ -46,7 +47,7 @@
             android:id="@+id/etSigninEmailUser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="125dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
             android:hint="Email"
@@ -54,19 +55,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-        <EditText
-            android:id="@+id/etSigninUsernameUser"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/icons8_username_48px"
-            android:drawablePadding="18dp"
-            android:inputType="text"
-            android:hint="Username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSigninEmailUser" />
 
         <EditText
             android:id="@+id/etSigninPasswordUser"
@@ -81,13 +69,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSigninUsernameUser" />
+            app:layout_constraintTop_toBottomOf="@+id/etSigninEmailUser" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignIn"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/signin_button_style"
             android:text="Sign In"
             android:textAllCaps="false"
@@ -103,7 +91,7 @@
             android:id="@+id/tvForgotYourPasswordSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:text="Forgot Your Password?"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
-            android:text="Don't Have Passowrd?"
+            android:text="Don't Have Account?"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/tvToSignUp"
             app:layout_constraintHorizontal_bias="0.5"
