@@ -3,6 +3,7 @@ package com.example.beragenda.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.TextUtils.replace
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,6 +46,7 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
         tvToSignUp = view.findViewById(R.id.tvToSignUp)
         tvForgotYourPasswordSignIn = view.findViewById(R.id.tvForgotYourPasswordSignIn)
         etSignInEmailUser = view.findViewById(R.id.etSigninEmailUser)
@@ -53,7 +55,7 @@ class SignInFragment : Fragment() {
 
         val SignUpFragment = SignUpFragment()
         val ForgotPasswordFragment = ForgotPasswordFragment()
-        val fragmentManager = childFragmentManager
+        val fragmentManager = fragmentManager
 
         tvToSignUp.setOnClickListener {
             fragmentManager?.beginTransaction()?.apply {
@@ -94,7 +96,6 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn(email: String, password: String) {
-        auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(it.isSuccessful) {

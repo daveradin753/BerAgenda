@@ -8,6 +8,8 @@ import com.example.beragenda.fragment.SignInFragment
 import kotlin.concurrent.fixedRateTimer
 
 class SignInSignUpActivity : AppCompatActivity() {
+    private val SignInFragment = SignInFragment()
+    private val fragmentManager = supportFragmentManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin_signup)
@@ -15,10 +17,9 @@ class SignInSignUpActivity : AppCompatActivity() {
 //        actionBar?.hide()
         supportActionBar?.hide()
 
-        val SignInFragment = SignInFragment()
-        val fragmentManager = supportFragmentManager
+
         fragmentManager.beginTransaction().apply {
-            add(R.id.flSigninSignup, SignInFragment)
+            replace(R.id.flSigninSignup, SignInFragment)
             addToBackStack(null)
             commit()
         }
