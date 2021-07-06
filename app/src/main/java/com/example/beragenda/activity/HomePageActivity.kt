@@ -40,6 +40,7 @@ class HomePageActivity : AppCompatActivity() {
         val toogle = ActionBarDrawerToggle(this, drawer_layout, findViewById(R.id.toolBar), R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toogle)
         toogle.syncState()
+
     }
 
     override fun onBackPressed() {
