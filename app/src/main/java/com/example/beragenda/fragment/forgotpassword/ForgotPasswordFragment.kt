@@ -1,6 +1,5 @@
-package com.example.beragenda.fragment
+package com.example.beragenda.fragment.forgotpassword
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -11,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.beragenda.R
+import com.example.beragenda.fragment.SignInFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPasswordFragment : Fragment() {

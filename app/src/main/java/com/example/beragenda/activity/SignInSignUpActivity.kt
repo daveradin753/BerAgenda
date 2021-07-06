@@ -10,12 +10,13 @@ import kotlin.concurrent.fixedRateTimer
 class SignInSignUpActivity : AppCompatActivity() {
     private val SignInFragment = SignInFragment()
     private val fragmentManager = supportFragmentManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin_signup)
 
 //        actionBar?.hide()
-        supportActionBar?.hide()
+//        supportActionBar?.hide()
 
 
         fragmentManager.beginTransaction().apply {
