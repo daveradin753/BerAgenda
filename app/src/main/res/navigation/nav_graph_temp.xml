@@ -2,16 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph_temp"
+    app:startDestination="@id/nav_boards">
 
     <fragment
-        android:id="@+id/nav_setting"
-        android:name="com.example.beragenda.fragment.SettingFragment"
-        android:label="setting"
-        tools:layout="@layout/fragment_setting" />
-    <fragment
-        android:id="@+id/nav_board"
+        android:id="@+id/nav_boards"
         android:name="com.example.beragenda.fragment.BoardsFragment"
-        android:label="boards"
+        android:label="Boards"
         tools:layout="@layout/fragment_boards" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.beragenda.fragment.SettingFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>

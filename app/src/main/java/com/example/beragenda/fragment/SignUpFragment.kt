@@ -45,13 +45,13 @@ class SignUpFragment : Fragment() {
         val SignInFragment = SignInFragment()
         val fragmentManager = fragmentManager
 
-//        tvForgotYourPasswordSignUp.setOnClickListener {
-//            fragmentManager?.beginTransaction()?.apply {
-//                replace(R.id.flSigninSignup, ForgotPasswordFragment)
-//                addToBackStack(null)
-//                commit()
-//            }
-//        }
+        tvForgotYourPasswordSignUp.setOnClickListener {
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.flSigninSignup, ForgotPasswordFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
 
         btnSignUp.setOnClickListener {
             val email: String = etSignUpEmailUser.text.toString()

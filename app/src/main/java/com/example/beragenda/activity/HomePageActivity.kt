@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.beragenda.R
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import androidx.navigation.ui.NavigationUI.setupWithNavController as setupWithNavController1
 
@@ -21,17 +22,19 @@ class HomePageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var drawer_layout : DrawerLayout
+    private lateinit var nav_view : NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
 
         drawer_layout = findViewById(R.id.drawer_layout)
+        nav_view = findViewById(R.id.nav_view)
 
         setSupportActionBar(findViewById(R.id.toolBar))
 
         val navController = Navigation.findNavController(this, R.id.fragment_container)
-        setupWithNavController1(findViewById(R.id.nav_view), navController)
+        NavigationUI.setupWithNavController(nav_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
 
         val toogle = ActionBarDrawerToggle(this, drawer_layout, findViewById(R.id.toolBar), R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -46,7 +49,6 @@ class HomePageActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.actionbar_board, menu)
         return true
