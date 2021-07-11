@@ -13,16 +13,22 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.beragenda.fragment.forgotpassword.ForgotPasswordFragment
+import com.example.beragenda.model.Users
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SignUpFragment : Fragment() {
 
     private lateinit var tvForgotYourPasswordSignUp: TextView
     private lateinit var etSignUpEmailUser: EditText
+    private lateinit var etSignUpUsernameUser: EditText
     private lateinit var etSignUpPasswordUser: EditText
     private lateinit var btnSignUp: Button
     private lateinit var btnBackSignUp : Button
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var databaseReference: DatabaseReference
     private var signInFragment= SignInFragment()
 
     override fun onCreateView(
@@ -37,6 +43,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        tvForgotYourPasswordSignUp = view.findViewById(R.id.tvForgotYourPasswordSignup)
         etSignUpEmailUser = view.findViewById(R.id.etSignupEmailUser)
+        etSignUpUsernameUser = view.findViewById(R.id.etSignupUsernameUser)
         etSignUpPasswordUser = view.findViewById(R.id.etSignupPasswordUser)
         btnSignUp = view.findViewById(R.id.btnSignUp)
         btnBackSignUp = view.findViewById(R.id.btnBackSignUp)
@@ -56,10 +63,14 @@ class SignUpFragment : Fragment() {
         btnSignUp.setOnClickListener {
             val email: String = etSignUpEmailUser.text.toString()
             val password: String = etSignUpPasswordUser.text.toString()
+            val username: String = etSignUpUsernameUser.text.toString()
 
             if (TextUtils.isEmpty(email)) {
                 etSignUpEmailUser.error = "Email is required!"
                 return@setOnClickListener
+            }
+            if (TextUtils.isEmpty(username)) {
+                etSignUpUsernameUser.error = "Username is required!"
             }
             if (TextUtils.isEmpty(password)) {
                 etSignUpPasswordUser.error = "Password is required!"
@@ -69,7 +80,7 @@ class SignUpFragment : Fragment() {
                 etSignUpPasswordUser.error = "Password must be more than 8 characters!"
                 return@setOnClickListener
             }
-            signUp(email, password)
+            signUp(email, password, username)
         }
 
         btnBackSignUp.setOnClickListener {
@@ -81,9 +92,15 @@ class SignUpFragment : Fragment() {
         }
     }
 
-        private fun signUp(email: String, password: String) {
+        private fun signUp(email: String, password: String, username: String) {
+            var uid = auth.currentUser?.uid.toString()
+            auth = FirebaseAuth.getInstance()
+            database = FirebaseDatabase.getInstance()
+            databaseReference = database.getReference("user").child(uid)
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                 if(it.isSuccessful) {
+                    val users = Users(uid, username, email)
+                    databaseReference.setValue(users)
                     Toast.makeText(this.context,"Register Success", Toast.LENGTH_SHORT).show()
                     Log.d("REGISTER", "createUserWithEmailAndPassword:success")
                     childFragmentManager?.beginTransaction()?.apply {
