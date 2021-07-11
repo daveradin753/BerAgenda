@@ -13,5 +13,6 @@
     <string name="language">Language</string>
     <string name="setting">Setting</string>
     <string name="go">Go</string>
+    <string name="darkmode">Dark Mode</string>
 
 </resources>

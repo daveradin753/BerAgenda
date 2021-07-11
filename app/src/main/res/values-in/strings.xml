@@ -14,4 +14,5 @@
     <string name="language">Bahasa</string>
     <string name="setting">Pengaturan</string>
     <string name="go">Pergi</string>
+    <string name="darkmode">Mode Gelap</string>
 </resources>
