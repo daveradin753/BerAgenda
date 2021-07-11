@@ -37,7 +37,7 @@ class SettingActivity : AppCompatActivity() {
         imageView.setOnClickListener {
             finish()
         }
-
+        
         val darkSwitch = findViewById<SwitchCompat>(R.id.darkSwitch)
         darkSwitch.isChecked = boolean
 
