@@ -25,6 +25,7 @@ class SettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_setting)
 
         val SWITCH_ON = "switch_on"
+        val DARK_MODE = "dark_mode"
         val sharedPreferences = getSharedPreferences("modeClick", Context.MODE_PRIVATE)
         val boolean = sharedPreferences.getBoolean(SWITCH_ON, false)
 
@@ -47,21 +48,18 @@ class SettingActivity : AppCompatActivity() {
             if (isChecked) {
                 editor.apply {
                     putBoolean(SWITCH_ON, true)
+                    putInt(DARK_MODE, 1)
                 }.apply()
                 setDarkMode(true)
             } else {
                 editor.apply {
                     putBoolean(SWITCH_ON, false)
+                    putInt(DARK_MODE, 0)
                 }.apply()
                 setDarkMode(false)
             }
         }
 
-    }
-
-    override fun onStart() {
-        // buat apply darkmode saat buka aplikasi kembali
-        super.onStart()
     }
 
     private fun setDarkMode(b: Boolean){

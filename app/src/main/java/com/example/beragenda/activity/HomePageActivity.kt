@@ -1,5 +1,6 @@
 package com.example.beragenda.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.beragenda.R
@@ -25,6 +27,7 @@ class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+        checkTheme(this)
 
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
@@ -90,6 +93,21 @@ class HomePageActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         auth.signOut()
         finish()
+    }
+
+    private fun checkTheme(context: Context) {
+        val DARK_MODE = "dark_mode"
+        val int = context.getSharedPreferences("modeClick", Context.MODE_PRIVATE)
+        when (int.getInt(DARK_MODE,0)){
+            0 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                delegate.applyDayNight()
+            }
+            1 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                delegate.applyDayNight()
+            }
+        }
     }
 
 }
