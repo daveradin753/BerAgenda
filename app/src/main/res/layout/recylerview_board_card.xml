@@ -19,7 +19,7 @@
             android:layout_marginStart="10dp">
 
             <ImageView
-                android:id="@+id/ivBoards"
+                android:id="@+id/ivBoardsImage"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_boards"
@@ -28,6 +28,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:id="@+id/tvBoardsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Test Board"

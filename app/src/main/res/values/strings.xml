@@ -14,5 +14,7 @@
     <string name="setting">Setting</string>
     <string name="go">Go</string>
     <string name="darkmode">Dark Mode</string>
+    <string name="boards">Boards</string>
+    <string name="search">Search</string>
 
 </resources>
