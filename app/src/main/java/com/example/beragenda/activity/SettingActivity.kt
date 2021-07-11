@@ -8,6 +8,7 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +25,7 @@ class SettingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_setting)
 
         val SWITCH_ON = "switch_on"
-        val sharedPreferences = getSharedPreferences("alarmClick", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("modeClick", Context.MODE_PRIVATE)
         val boolean = sharedPreferences.getBoolean(SWITCH_ON, false)
 
         val language = findViewById<ConstraintLayout>(R.id.firstButton)
@@ -47,21 +48,36 @@ class SettingActivity : AppCompatActivity() {
                 editor.apply {
                     putBoolean(SWITCH_ON, true)
                 }.apply()
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                delegate.applyDayNight()
+                setDarkMode(true)
             } else {
                 editor.apply {
                     putBoolean(SWITCH_ON, false)
                 }.apply()
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                delegate.applyDayNight()
+                setDarkMode(false)
             }
         }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        onBackPressed()
-//        return true
-//    }
+    }
+
+    private fun setDarkMode(b: Boolean){
+        if(b){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            delegate.applyDayNight()
+            Toast.makeText(
+                this,
+                "Dark Mode On",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            delegate.applyDayNight()
+            Toast.makeText(
+                this,
+                "Dark Mode Off",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
 }
