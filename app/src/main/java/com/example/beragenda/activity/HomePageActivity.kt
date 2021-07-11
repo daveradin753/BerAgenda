@@ -31,10 +31,6 @@ class HomePageActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
-//        val navController = Navigation.findNavController(this, R.id.fragment_container)
-//        NavigationUI.setupWithNavController(nav_view, navController)
-//        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
-
         val toogle = ActionBarDrawerToggle(this, drawer_layout, findViewById(R.id.boardsPageToolBar), R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toogle)
         toogle.syncState()
@@ -68,8 +64,6 @@ class HomePageActivity : AppCompatActivity() {
             }
             R.id.logOut -> {
                 logOut()
-                intent = Intent(this, SignInSignUpActivity::class.java)
-                startActivity(intent)
             }
         }
 
@@ -95,6 +89,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun logOut() {
         auth = FirebaseAuth.getInstance()
         auth.signOut()
+        finish()
     }
 
 }

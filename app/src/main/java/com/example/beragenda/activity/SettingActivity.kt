@@ -59,6 +59,11 @@ class SettingActivity : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        // buat apply darkmode saat buka aplikasi kembali
+        super.onStart()
+    }
+
     private fun setDarkMode(b: Boolean){
         if(b){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
