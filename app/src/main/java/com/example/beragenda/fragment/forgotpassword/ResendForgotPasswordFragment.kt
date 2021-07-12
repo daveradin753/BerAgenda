@@ -1,4 +1,4 @@
-package com.example.beragenda.fragment
+package com.example.beragenda.fragment.forgotpassword
 
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.beragenda.R
+import com.example.beragenda.fragment.SignInFragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 
 class ResendForgotPasswordFragment : Fragment() {
@@ -44,10 +44,12 @@ class ResendForgotPasswordFragment : Fragment() {
             }
         }
         tvResendEmail.setOnClickListener {
-            auth.sendPasswordResetEmail(email).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Log.d("FORGOT PASS", "Email sent.")
-                    Toast.makeText(this.context, "Email has been sent!", Toast.LENGTH_SHORT)
+            if (email != null) {      //kalo gaada, error emailnya
+                auth.sendPasswordResetEmail(email).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        Log.d("FORGOT PASS", "Email sent.")
+                        Toast.makeText(this.context, "Email has been sent!", Toast.LENGTH_SHORT)
+                    }
                 }
             }
         }

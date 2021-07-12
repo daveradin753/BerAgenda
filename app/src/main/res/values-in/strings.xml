@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BerAgenda</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="hello_blank_fragment">Halo fragment kosong</string>
+    <string name="menu_logout">Keluar</string>
+    <string name="menu_settings">Pengaturan</string>
+    <string name="home_nav_header_desc">Pengguna</string>
+    <string name="home_nav_header_title">E-mail@email.com</string>
+    <string name="home_nav_header_subtitle">Informasi Tambahan</string>
+    <string name="resend_forgot_password_instruction">Silakan periksa kotak masuk Anda dan klik tautan yang diterima untuk mengatur ulang kata sandi</string>
+    <string name="language">Bahasa</string>
+    <string name="setting">Pengaturan</string>
+    <string name="go">Pergi</string>
+    <string name="boards">Papan</string>
+    <string name="search">Cari</string>
+    <string name="darkmode">Mode Gelap</string>
+</resources>

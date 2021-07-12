@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#6EF7C8">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBoard1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp">
+
+            <ImageView
+                android:id="@+id/ivBoardsImage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_boards"
+                android:background="#9F9F9F"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvBoardsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test Board"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/cvBoard1"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditBoard"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_edit"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDeleteBoard"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_delete"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/btnEditBoard"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_color_lens"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/btnDeleteBoard"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

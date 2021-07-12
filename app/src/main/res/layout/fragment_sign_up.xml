@@ -30,6 +30,16 @@
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBackSignUp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginStart="21dp"
+            android:background="@drawable/icon_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +57,7 @@
             android:id="@+id/etSignupEmailUser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="125dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
             android:hint="Email"
@@ -55,6 +65,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <EditText
+            android:id="@+id/etSignupUsernameUser"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/icons8_username_48px"
+            android:drawablePadding="18dp"
+            android:inputType="text"
+            android:hint="Username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etSignupEmailUser" />
 
         <EditText
             android:id="@+id/etSignupPasswordUser"
@@ -65,15 +88,16 @@
             android:drawablePadding="18dp"
             android:hint="Password"
             android:inputType="textPassword"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSignupEmailUser" />
+            app:layout_constraintTop_toBottomOf="@+id/etSignupUsernameUser" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignUp"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="70dp"
             android:background="@drawable/signin_button_style"
             android:text="Sign Up"
             android:textAllCaps="false"
@@ -83,17 +107,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupPasswordUser" />
-
-        <TextView
-            android:id="@+id/tvForgotYourPasswordSignup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Forgot Your Password?"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

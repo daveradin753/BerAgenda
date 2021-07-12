@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BerAgenda</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_logout">Log Out</string>
     <string name="menu_settings">Settings</string>
@@ -8,5 +10,11 @@
     <string name="home_nav_header_title">E-mail@email.com</string>
     <string name="home_nav_header_subtitle">Additional Info</string>
     <string name="resend_forgot_password_instruction">Please check your inbox dan click in the received link to reset a password</string>
+    <string name="language">Language</string>
+    <string name="setting">Setting</string>
+    <string name="go">Go</string>
+    <string name="darkmode">Dark Mode</string>
+    <string name="boards">Boards</string>
+    <string name="search">Search</string>
 
 </resources>
