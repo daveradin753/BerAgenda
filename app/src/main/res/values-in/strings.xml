@@ -17,5 +17,7 @@
     <string name="boards">Papan</string>
     <string name="search">Cari</string>
     <string name="darkmode">Mode Gelap</string>
+    <string name="task_management">Pengolaan Tugas</string>
+    <string name="enter_done">Ganti key enter untuk selesai</string>
     <string name="forgot_your_password">Lupa password akun?</string>
 </resources>

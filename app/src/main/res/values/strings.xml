@@ -20,5 +20,6 @@
     <string name="test_card_content" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra sit dignissim in adipiscing a id ultricies turpis.</string>
     <string name="task_management">Task Management</string>
     <string name="enter_done">Change enter key to done</string>
+    <string name="forgot_your_password">Forgot your password?</string>
 
 </resources>
