@@ -7,7 +7,7 @@
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
     tools:context=".activity.HomePageActivity">
-<!--    tools:openDrawer="start">-->
+    <!--    tools:openDrawer="start">-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,19 +21,12 @@
             android:background="@color/blue"
             app:titleTextColor="@color/white"
             app:title="@string/boards"
-            android:elevation="4dp"/>
+            android:elevation="4dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBoards"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-<!--        <fragment-->
-<!--            android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--            android:id="@+id/fragment_container"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:navGraph="@navigation/nav_graph_temp"/>-->
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
@@ -43,6 +36,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"/>
+        app:menu="@menu/navigation_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

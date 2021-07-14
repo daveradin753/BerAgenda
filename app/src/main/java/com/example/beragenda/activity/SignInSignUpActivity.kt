@@ -1,11 +1,9 @@
 package com.example.beragenda.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import com.example.beragenda.R
 import com.example.beragenda.fragment.SignInFragment
-import kotlin.concurrent.fixedRateTimer
 
 class SignInSignUpActivity : AppCompatActivity() {
     private val SignInFragment = SignInFragment()

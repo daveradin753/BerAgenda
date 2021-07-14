@@ -17,4 +17,5 @@
     <string name="boards">Papan</string>
     <string name="search">Cari</string>
     <string name="darkmode">Mode Gelap</string>
+    <string name="forgot_your_password">Lupa password akun?</string>
 </resources>

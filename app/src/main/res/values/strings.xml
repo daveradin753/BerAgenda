@@ -16,5 +16,9 @@
     <string name="darkmode">Dark Mode</string>
     <string name="boards">Boards</string>
     <string name="search">Search</string>
+    <string name="forgot_your_password">Forgot Your Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="background">Background</string>
 
 </resources>
