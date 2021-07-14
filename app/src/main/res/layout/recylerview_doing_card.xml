@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_edit"
+            android:contentDescription="@string/edit_card"
             android:layout_below="@id/tvCardDoingContext"
             android:layout_alignParentStart="true"/>
 
@@ -36,8 +37,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="12dp"
             android:src="@drawable/ic_delete"
+            android:contentDescription="@string/delete_card"
             android:layout_below="@id/tvCardDoingContext"
-            android:layout_toRightOf="@id/btnEditDoingCard"/>
+            android:layout_toEndOf="@id/btnEditDoingCard"/>
 
         <ImageView
             android:id="@+id/btnForwardDoingCard"
@@ -45,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_arrow_forward"
+            android:contentDescription="@string/forward_arrow_card"
             android:layout_below="@id/tvCardDoingContext"
             android:layout_alignParentEnd="true"/>
 
@@ -55,8 +58,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
             android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/back_arrow_card"
             android:layout_below="@id/tvCardDoingContext"
-            android:layout_toLeftOf="@id/btnForwardDoingCard"/>
+            android:layout_toStartOf="@id/btnForwardDoingCard"/>
 
     </RelativeLayout>
     

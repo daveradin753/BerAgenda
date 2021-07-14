@@ -21,5 +21,12 @@
     <string name="task_management">Task Management</string>
     <string name="enter_done">Change enter key to done</string>
     <string name="forgot_your_password">Forgot your password?</string>
+    <string name="background">Background</string>
+    <string name="application_logo">Application Logo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="edit_card">Edit Card</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="forward_arrow_card">Forward arrow card</string>
+    <string name="back_arrow_card">Back arrow card</string>
 
 </resources>
