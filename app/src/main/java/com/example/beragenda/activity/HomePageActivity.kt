@@ -12,7 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
+import com.example.beragenda.adapter.BoardCustomAdapter
+import com.example.beragenda.model.Boards
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -22,7 +26,8 @@ class HomePageActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var drawer_layout: DrawerLayout
     private lateinit var nav_view: NavigationView
-    private lateinit var actionBar: ActionBar
+    private var dataBoards: MutableList<Boards> = ArrayList()
+    private lateinit var rvBoards: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +36,7 @@ class HomePageActivity : AppCompatActivity() {
 
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
+        rvBoards = findViewById(R.id.rvBoards)
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
@@ -45,6 +51,13 @@ class HomePageActivity : AppCompatActivity() {
         toogle.syncState()
 
         NavigationDrawer()
+        addBoards()
+
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val adapter = BoardCustomAdapter(dataBoards)
+
+        rvBoards.layoutManager = layoutManager
+        rvBoards.adapter = adapter
 
     }
 
@@ -128,6 +141,10 @@ class HomePageActivity : AppCompatActivity() {
                 delegate.applyDayNight()
             }
         }
+    }
+
+    private fun addBoards() {
+        dataBoards.add(Boards("Test Board"))
     }
 
 }

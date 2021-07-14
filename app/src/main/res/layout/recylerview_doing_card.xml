@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/yellow_green">
+
+        <TextView
+            android:id="@+id/tvCardDoingContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_card_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/btnEditDoingCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_edit"
+            android:layout_below="@id/tvCardDoingContext"
+            android:layout_alignParentStart="true"/>
+
+        <ImageView
+            android:id="@+id/btnDeleteDoingCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_delete"
+            android:layout_below="@id/tvCardDoingContext"
+            android:layout_toRightOf="@id/btnEditDoingCard"/>
+
+        <ImageView
+            android:id="@+id/btnForwardDoingCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_arrow_forward"
+            android:layout_below="@id/tvCardDoingContext"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
+            android:id="@+id/btnBackDoingCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_below="@id/tvCardDoingContext"
+            android:layout_toLeftOf="@id/btnForwardDoingCard"/>
+
+    </RelativeLayout>
+    
+</androidx.cardview.widget.CardView>
