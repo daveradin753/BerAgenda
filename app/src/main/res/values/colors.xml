@@ -12,4 +12,6 @@
     <color name="cyan">#9EF5CF</color>
     <color name="green_light_blue">#E8FFC1</color>
     <color name="toska">#16CCBD</color>
+    <color name="grey">#323333</color>
+    <color name="light_grey">#5A5C5C</color>
 </resources>
