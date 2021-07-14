@@ -16,5 +16,6 @@
     <string name="darkmode">Dark Mode</string>
     <string name="boards">Boards</string>
     <string name="search">Search</string>
+    <string name="boards_name" translatable="false">Test Board</string>
 
 </resources>
