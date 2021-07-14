@@ -17,7 +17,7 @@
     <string name="boards">Boards</string>
     <string name="search">Search</string>
     <string name="boards_name" translatable="false">Test Board</string>
-    <string name="task_management">Task Management</string>
+    <string name="task_management" translatable="false">Task Management</string>
     <string name="enter_done">Change enter key to done</string>
 
 </resources>

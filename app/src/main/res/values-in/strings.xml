@@ -18,4 +18,5 @@
     <string name="search">Cari</string>
     <string name="darkmode">Mode Gelap</string>
     <string name="forgot_your_password">Lupa password akun?</string>
+    <string name="enter_done">Ubah tombol enter menuju selesai</string>
 </resources>
