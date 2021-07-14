@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
-import com.example.beragenda.activity.CardActivity
+import com.example.beragenda.activity.BoardCardActivity
 import com.example.beragenda.model.Boards
 
 class BoardCustomAdapter(private val dataset: List<Boards>) :
@@ -30,7 +30,7 @@ class BoardCustomAdapter(private val dataset: List<Boards>) :
             btnDeleteBoard = view.findViewById(R.id.btnDeleteBoard)
             btnEditBoard = view.findViewById(R.id.btnEditBoard)
             view.setOnClickListener { 
-                val intent = Intent(view.context, CardActivity::class.java)
+                val intent = Intent(view.context, BoardCardActivity::class.java)
                 view.context.startActivity(intent)
             }
         }
@@ -45,6 +45,9 @@ class BoardCustomAdapter(private val dataset: List<Boards>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvBoardsTitle.text = dataset[position].title
+        holder.btnDeleteBoard.setOnClickListener {
+            dataset[position]
+        }
 //        holder.ivBoardsImage
     }
 

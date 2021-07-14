@@ -1,8 +1,10 @@
 package com.example.beragenda.activity
 
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.viewpager.widget.ViewPager
 import com.example.beragenda.R
 import com.example.beragenda.adapter.ViewPagerAdapter
@@ -35,6 +37,10 @@ class BoardCardActivity : AppCompatActivity() {
                     2 -> tab.text = "Done"
                 }
             }.attach()
+        }
+        val backBoardCard = findViewById<ImageView>(R.id.backBoardCard)
+        backBoardCard.setOnClickListener {
+            finish()
         }
 
     }
