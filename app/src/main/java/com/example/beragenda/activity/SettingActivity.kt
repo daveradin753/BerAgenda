@@ -2,13 +2,11 @@ package com.example.beragenda.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -62,8 +60,8 @@ class SettingActivity : AppCompatActivity() {
 
     }
 
-    private fun setDarkMode(b: Boolean){
-        if(b){
+    private fun setDarkMode(b: Boolean) {
+        if (b) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             delegate.applyDayNight()
             Toast.makeText(
@@ -71,8 +69,7 @@ class SettingActivity : AppCompatActivity() {
                 "Dark Mode On",
                 Toast.LENGTH_SHORT
             ).show()
-        }
-        else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             delegate.applyDayNight()
             Toast.makeText(

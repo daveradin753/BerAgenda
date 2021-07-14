@@ -30,16 +30,6 @@
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBackSignUp"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginStart="21dp"
-            android:background="@drawable/icon_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,12 +47,15 @@
             android:id="@+id/etSignupEmailUser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="80dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
             android:hint="Email"
+            android:textColor="@color/black"
+            android:textColorHint="@color/common_google_signin_btn_text_light_default"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -75,6 +68,8 @@
             android:drawablePadding="18dp"
             android:inputType="text"
             android:hint="Username"
+            android:textColor="@color/black"
+            android:textColorHint="@color/common_google_signin_btn_text_light_default"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupEmailUser" />
@@ -87,6 +82,8 @@
             android:drawableStart="@drawable/icons8_password_64px"
             android:drawablePadding="18dp"
             android:hint="Password"
+            android:textColor="@color/black"
+            android:textColorHint="@color/common_google_signin_btn_text_light_default"
             android:inputType="textPassword"
             android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +94,7 @@
             android:id="@+id/btnSignUp"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/signin_button_style"
             android:text="Sign Up"
             android:textAllCaps="false"
@@ -105,6 +102,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etSignupPasswordUser" />
 

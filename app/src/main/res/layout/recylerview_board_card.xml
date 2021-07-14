@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp">
 
@@ -23,7 +24,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/ic_boards"
-                android:background="#9F9F9F"/>
+                android:background="#9F9F9F" />
 
         </androidx.cardview.widget.CardView>
 
@@ -37,7 +38,7 @@
             android:layout_toRightOf="@id/cvBoard1"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginEnd="10dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEditBoard"
@@ -47,7 +48,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDeleteBoard"
@@ -57,16 +58,17 @@
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@id/btnEditBoard"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnColorBoard"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@drawable/ic_color_lens"
             android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@id/btnDeleteBoard"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
     </RelativeLayout>
 
