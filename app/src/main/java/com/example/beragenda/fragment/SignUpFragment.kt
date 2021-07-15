@@ -1,18 +1,16 @@
 package com.example.beragenda.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import com.example.beragenda.R
-import android.text.TextUtils
-import android.util.Log
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
 import android.widget.Toast
-import com.example.beragenda.fragment.forgotpassword.ForgotPasswordFragment
+import androidx.fragment.app.Fragment
+import com.example.beragenda.R
 import com.example.beragenda.model.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -20,16 +18,15 @@ import com.google.firebase.database.FirebaseDatabase
 
 class SignUpFragment : Fragment() {
 
-    private lateinit var tvForgotYourPasswordSignUp: TextView
     private lateinit var etSignUpEmailUser: EditText
     private lateinit var etSignUpUsernameUser: EditText
     private lateinit var etSignUpPasswordUser: EditText
     private lateinit var btnSignUp: Button
-    private lateinit var btnBackSignUp : Button
+    private lateinit var btnBackSignUp: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
-    private var signInFragment= SignInFragment()
+    private var signInFragment = SignInFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,24 +38,15 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        tvForgotYourPasswordSignUp = view.findViewById(R.id.tvForgotYourPasswordSignup)
         etSignUpEmailUser = view.findViewById(R.id.etSignupEmailUser)
         etSignUpUsernameUser = view.findViewById(R.id.etSignupUsernameUser)
         etSignUpPasswordUser = view.findViewById(R.id.etSignupPasswordUser)
         btnSignUp = view.findViewById(R.id.btnSignUp)
-        btnBackSignUp = view.findViewById(R.id.btnBackSignUp)
 
-        val ForgotPasswordFragment = ForgotPasswordFragment()
         val SignInFragment = SignInFragment()
         val fragmentManager = fragmentManager
-
-        tvForgotYourPasswordSignUp.setOnClickListener {
-            fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.flSigninSignup, ForgotPasswordFragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
 
         btnSignUp.setOnClickListener {
             val email: String = etSignUpEmailUser.text.toString()
@@ -92,27 +80,25 @@ class SignUpFragment : Fragment() {
         }
     }
 
-        private fun signUp(email: String, password: String, username: String) {
-            var uid = auth.currentUser?.uid.toString()
-            auth = FirebaseAuth.getInstance()
-            database = FirebaseDatabase.getInstance()
-            databaseReference = database.getReference("user").child(uid)
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
-                if(it.isSuccessful) {
-                    val users = Users(uid, username, email)
-                    databaseReference.setValue(users)
-                    Toast.makeText(this.context,"Register Success", Toast.LENGTH_SHORT).show()
-                    Log.d("REGISTER", "createUserWithEmailAndPassword:success")
-                    childFragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.flSigninSignup, signInFragment)
-                        addToBackStack(null)
-                        commit()
-                    }
-
-            }else{
-                    Toast.makeText(this.context,"Register failed", Toast.LENGTH_SHORT).show()
-                    Log.d("REGISTER", "createUserWithEmailAndPassword:failed")
+    private fun signUp(email: String, password: String, username: String) {
+        val uid = auth.currentUser?.uid.toString()
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+            if (it.isSuccessful) {
+                val users = Users(uid, username, email)
+                databaseReference.setValue(users)
+                databaseReference = database.getReference("user").child(uid)
+                Toast.makeText(this.context, "Register Success", Toast.LENGTH_SHORT).show()
+                Log.d("REGISTER", "createUserWithEmailAndPassword:success")
+                fragmentManager?.beginTransaction()?.apply {
+                    replace(R.id.flSigninSignup, signInFragment)
+                    addToBackStack(null)
+                    commit()
                 }
+
+            } else {
+                Toast.makeText(this.context, "Register failed", Toast.LENGTH_SHORT).show()
+                Log.d("REGISTER", "createUserWithEmailAndPassword:failed")
+            }
         }
     }
 

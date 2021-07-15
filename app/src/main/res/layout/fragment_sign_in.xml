@@ -18,13 +18,15 @@
             android:src="@drawable/bottom_card_corner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/background" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/app_logo"
+            android:contentDescription="@string/application_logo"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView3"
@@ -35,11 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
-            android:text="Sign In"
-            android:textColor="@color/white"
-            android:textSize="21dp"
-            android:textStyle="bold"
             android:fontFamily="@font/ruluko"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="@+id/imageView3" />
 
@@ -47,12 +49,15 @@
             android:id="@+id/etSigninEmailUser"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
+            android:layout_marginTop="80dp"
             android:drawableStart="@drawable/icons8_email_48px"
             android:drawablePadding="18dp"
             android:hint="Email"
+            android:textColorHint="@color/common_google_signin_btn_text_light_default"
             android:inputType="textEmailAddress"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -64,8 +69,10 @@
             android:drawableStart="@drawable/icons8_password_64px"
             android:drawablePadding="18dp"
             android:hint="Password"
-            android:inputType="textPassword"
+            android:textColorHint="@color/common_google_signin_btn_text_light_default"
+            android:textColor="@color/black"
             android:imeOptions="actionDone"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,38 +99,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Forgot Your Password?"
+            android:text="@string/forgot_your_password"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            android:text="Don't Have Account?"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/tvToSignUp"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotYourPasswordSignIn" />
-
-        <TextView
-            android:id="@+id/tvToSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="88dp"
-            android:text="Sign Up"
-            android:textColor="#0278AE"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/tvForgotYourPasswordSignIn" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotYourPasswordSignIn">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't Have Account?"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvToSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Sign Up"
+                android:textColor="#0278AE" />
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

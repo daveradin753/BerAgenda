@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/iconSearch"
+    <item
+        android:id="@+id/iconSearch"
         android:title="@string/search"
         android:icon="@drawable/ic_search"
-        app:showAsAction="always">
-    </item>
+        app:showAsAction="always"></item>
 
-    <item android:id="@+id/iconNotification"
+    <item
+        android:id="@+id/iconNotification"
         android:title="Notification"
         android:icon="@drawable/ic_notifications"
-        app:showAsAction="always">
-    </item>
+        app:showAsAction="always"></item>
 
-    <item android:id="@+id/logOut"
+    <item
+        android:id="@+id/logOut"
         android:title="Log Out"
-        app:showAsAction="never">
-    </item>
+        app:showAsAction="never"></item>
 
 </menu>

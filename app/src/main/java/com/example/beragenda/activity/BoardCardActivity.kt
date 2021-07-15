@@ -1,40 +1,47 @@
 package com.example.beragenda.activity
 
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import androidx.viewpager.widget.ViewPager
 import com.example.beragenda.R
-import com.example.beragenda.adapter.ViewPagerAdapater
+import com.example.beragenda.adapter.ViewPagerAdapter
+import com.example.beragenda.databinding.ActivityBoardCardBinding
 import com.example.beragenda.fragment.DoingFragment
 import com.example.beragenda.fragment.DoneFragment
 import com.example.beragenda.fragment.ToDoFragment
 import com.google.android.material.tabs.TabLayout
-
-private lateinit var viewPager : ViewPager
-private lateinit var tabLayout : TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class BoardCardActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityBoardCardBinding
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_board_card)
+        binding = ActivityBoardCardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setUpTabs()
-    }
+        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
 
-    private fun setUpTabs(){
+        with(binding){
+            viewPager.adapter = viewPagerAdapter
 
-        viewPager = findViewById(R.id.viewPager)
-        tabLayout = findViewById(R.id.tabLayout)
+            TabLayoutMediator(tabLayout, viewPager){ tab, position ->
+                when(position){
+                    0 -> tab.text = "To Do"
+                    1 -> tab.text = "Doing"
+                    2 -> tab.text = "Done"
+                }
+            }.attach()
+        }
+        val backBoardCard = findViewById<ImageView>(R.id.backBoardCard)
+        backBoardCard.setOnClickListener {
+            finish()
+        }
 
-        val adapter = ViewPagerAdapater(supportFragmentManager)
-        adapter.addFragment(ToDoFragment()," ToDo")
-        adapter.addFragment(DoingFragment(),"Doing")
-        adapter.addFragment(DoneFragment(),"Done")
-        viewPager.adapter = adapter
-        tabLayout.setupWithViewPager(viewPager)
-
-//        tabLayout.getTabAt(0)!!.setText("To Do")
-//        tabLayout.getTabAt(1)!!.setText("Doing")
-//        tabLayout.getTabAt(2)!!.setText("Done")
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.beragenda.R
 import com.example.beragenda.activity.HomePageActivity
 import com.example.beragenda.fragment.forgotpassword.ForgotPasswordFragment
@@ -26,8 +26,10 @@ class SignInFragment : Fragment() {
     private lateinit var btnSignin: Button
     private lateinit var auth: FirebaseAuth
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
@@ -82,7 +84,7 @@ class SignInFragment : Fragment() {
                 etSignInPasswordUser.error = "Password is required!"
                 return@setOnClickListener
             }
-            if (password.length < 8){
+            if (password.length < 8) {
                 etSignInPasswordUser.error = "Password must be more than 8 characters!"
                 return@setOnClickListener
             }
@@ -95,13 +97,13 @@ class SignInFragment : Fragment() {
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
-                if(it.isSuccessful) {
-                    Toast.makeText(this.context,"Login Success", Toast.LENGTH_SHORT).show()
+                if (it.isSuccessful) {
+                    Toast.makeText(this.context, "Login Success", Toast.LENGTH_SHORT).show()
                     Log.d("LOGIN", "signInWithEmail:success")
                     val intent = Intent(this.context, HomePageActivity::class.java)
                     startActivity(intent)
-                }else {
-                    Toast.makeText(this.context,"Login failed", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this.context, "Login failed", Toast.LENGTH_SHORT).show()
                     Log.d("LOGIN", "signInWithEmail:failed")
                 }
             }
@@ -113,6 +115,6 @@ class SignInFragment : Fragment() {
     }
 
     companion object {
-        
+
     }
 }
