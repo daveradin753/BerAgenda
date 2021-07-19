@@ -40,6 +40,14 @@ class DoneFragment : Fragment() {
         dataDoneCards.add(DoneCards("This is test card!"))
     }
 
+    private fun editDoneCard () {
+
+    }
+
+    private fun deleteDoneCard () {
+        dataDoneCards.remove("This is test card!")
+    }
+
     companion object {
 
     }
