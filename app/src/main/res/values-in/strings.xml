@@ -20,5 +20,5 @@
     <string name="task_management">Pengolaan Tugas</string>
     <string name="enter_done">Ganti key enter untuk selesai</string>
     <string name="forgot_your_password">Lupa password akun?</string>
-    <string name="enter_done">Ubah tombol enter menuju selesai</string>
+<!--    <string name="enter_done">Ubah tombol enter menuju selesai</string>-->
 </resources>

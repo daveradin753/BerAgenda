@@ -10,15 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BerAgenda">
         <activity android:name=".activity.BoardCardActivity">
+        </activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.HomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.HomePageActivity">
-
         </activity>
         <activity android:name=".activity.SignInSignUpActivity" />
     </application>
