@@ -40,7 +40,7 @@ class BoardDoingCustomAdapter(private val dataset: List<DoingCards>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        holder.tvCardDoingContext.text = dataset[position].context
 //        holder.ivBoardsImage
     }
 
