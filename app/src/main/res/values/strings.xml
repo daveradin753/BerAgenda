@@ -37,6 +37,7 @@
     <string name="content_inside">What\'s the content inside this board?</string>
     <string name="image_to_use">Image to use</string>
     <string name="enter_a_title">Enter a title</string>
+    <string name="add_card">Add Card</string>
 
 
 </resources>

@@ -22,9 +22,19 @@
     <string name="forgot_your_password">Lupa password akun?</string>
     <string name="background">Background</string>
     <string name="application_logo">Application Logo</string>
-    <string name="sign_in">Sign In</string>
-    <string name="edit_card">Edit Card</string>
-    <string name="delete_card">Delete Card</string>
+    <string name="sign_in">Masuk Applikasi</string>
+    <string name="edit_card">Ubah Kartu</string>
+    <string name="delete_card">Hapus Kartu</string>
     <string name="forward_arrow_card">Forward arrow card</string>
     <string name="back_arrow_card">Back arrow card</string>
+    <string name="add_board">Tambah Kartu</string>
+    <string name="done">Selesai</string>
+    <string name="title">Judul</string>
+    <string name="board_image">Gambar Board</string>
+    <string name="colors">Warna</string>
+    <string name="content">Konten</string>
+    <string name="content_inside">Apa isi konten?</string>
+    <string name="image_to_use">Gambar yang dipakai</string>
+    <string name="enter_a_title">Masukan judul</string>
+    <string name="add_card">Tambah Kartu</string>
 </resources>

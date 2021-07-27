@@ -33,7 +33,7 @@ class SettingActivity : AppCompatActivity() {
             startActivity(mIntent)
         }
 
-        val imageView = findViewById<ImageView>(R.id.back)
+        val imageView = findViewById<ImageView>(R.id.backAddContentBoard)
         imageView.setOnClickListener {
             finish()
         }
