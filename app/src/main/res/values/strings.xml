@@ -28,6 +28,15 @@
     <string name="delete_card">Delete Card</string>
     <string name="forward_arrow_card">Forward arrow card</string>
     <string name="back_arrow_card">Back arrow card</string>
+    <string name="add_board">Add Board</string>
+    <string name="done">Done</string>
+    <string name="title">Title</string>
+    <string name="board_image">Board Image</string>
+    <string name="colors">Colors</string>
+    <string name="content">Content</string>
+    <string name="content_inside">What\'s the content inside this board?</string>
+    <string name="image_to_use">Image to use</string>
+    <string name="enter_a_title">Enter a title</string>
 
 
 </resources>

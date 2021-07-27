@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BerAgenda">
         <activity android:name=".activity.BoardCardActivity">
-
         </activity>
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.HomePageActivity">
