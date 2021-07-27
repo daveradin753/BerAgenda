@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class HomePageActivity : AppCompatActivity() {
 
-
     private lateinit var auth: FirebaseAuth
     private lateinit var drawer_layout: DrawerLayout
     private lateinit var nav_view: NavigationView

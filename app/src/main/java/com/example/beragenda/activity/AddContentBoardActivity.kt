@@ -26,6 +26,7 @@ class AddContentBoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_content_board)
 
+        database = Firebase.firestore
         backAddContentBoard = findViewById(R.id.backAddContentBoard)
         checklistAddContentBoard = findViewById(R.id.checklistAddContentBoard)
         tvAddCardContent = findViewById(R.id.tvAddCardContent)
@@ -38,9 +39,6 @@ class AddContentBoardActivity : AppCompatActivity() {
             finish()
 
         }
-
-        database = Firebase.firestore
-
     }
 
     private fun addDataCard() {
