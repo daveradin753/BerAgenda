@@ -144,7 +144,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun addBoards() {
-        dataBoards.add(Boards("Test Board"))
+
     }
 
 }
