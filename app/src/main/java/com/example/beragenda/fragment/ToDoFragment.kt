@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
@@ -15,6 +16,7 @@ import com.example.beragenda.model.ToDoCards
 class ToDoFragment : Fragment() {
 
     private lateinit var rvBoardsToDo: RecyclerView
+    private lateinit var btnAddCard: ImageView
     private var dataTodoCard: MutableList<ToDoCards> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {

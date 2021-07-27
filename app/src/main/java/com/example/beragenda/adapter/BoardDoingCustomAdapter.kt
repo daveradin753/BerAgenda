@@ -24,7 +24,7 @@ class BoardDoingCustomAdapter(private val dataset: List<DoingCards>) :
 
         init {
             tvCardDoingContext = view.findViewById(R.id.tvCardDoingContext)
-            btnEditDoingCard = view.findViewById(R.id.btnEditBoard)
+            btnEditDoingCard = view.findViewById(R.id.btnEditDoingCard)
             btnDeleteDoingCard = view.findViewById(R.id.btnDeleteDoingCard)
             btnForwardDoingCard = view.findViewById(R.id.btnForwardDoingCard)
             btnBackDoingCard = view.findViewById(R.id.btnBackDoingCard)
