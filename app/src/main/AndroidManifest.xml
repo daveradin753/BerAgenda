@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BerAgenda">
-        <activity android:name=".activity.BoardCardActivity">
-        </activity>
+        <activity android:name=".activity.AddContentBoardActivity"></activity>
+        <activity android:name=".activity.AddBoardActivity" />
+        <activity android:name=".activity.BoardCardActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.HomePageActivity">
             <intent-filter>

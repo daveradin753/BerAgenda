@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/back"
+                android:id="@+id/backAddBoard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -34,6 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/titleAddBoard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -49,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/checklist"
+                android:id="@+id/checklistAddBoard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="360dp"
@@ -92,6 +93,7 @@
             app:layout_constraintVertical_bias="0.262" />
 
         <EditText
+            android:id="@+id/etEnterTitleAddBoard"
             android:layout_width="370dp"
             android:layout_height="45dp"
             android:backgroundTint="@color/light_grey"
@@ -117,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstPanel">
 
         <TextView
-            android:id="@+id/board_image"
+            android:id="@+id/board_imageAddBoard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -131,7 +133,7 @@
             app:layout_constraintVertical_bias="0.077" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/ivAddBoard"
             android:layout_width="370dp"
             android:layout_height="120dp"
             android:background="@color/light_grey"
@@ -140,7 +142,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/board_image"
+            app:layout_constraintStart_toStartOf="@id/board_imageAddBoard"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.733"
             app:tint="@color/grey" />
@@ -169,7 +171,7 @@
             app:layout_constraintVertical_bias="0.077" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/iv1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/ic_baseline_brightness_1_24"
@@ -181,7 +183,7 @@
             app:tint="@color/toska" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/iv2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="68dp"
@@ -194,7 +196,7 @@
             app:tint="@color/light_blue" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/iv3"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="136dp"
@@ -207,7 +209,7 @@
             app:tint="@color/blue" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/iv4"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="204dp"
@@ -220,7 +222,7 @@
             app:tint="@color/teal_200" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/iv5"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="272dp"
