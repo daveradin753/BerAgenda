@@ -39,6 +39,7 @@ class AddContentBoardActivity : AppCompatActivity() {
             finish()
 
         }
+
     }
 
     private fun addDataCard() {

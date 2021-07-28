@@ -44,7 +44,7 @@ class BoardCustomAdapter(private val dataset: List<Boards>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvBoardsTitle.text = dataset[position].title
+        holder.tvBoardsTitle.text = dataset[position].project_name
         holder.btnDeleteBoard.setOnClickListener {
             dataset[position]
         }
