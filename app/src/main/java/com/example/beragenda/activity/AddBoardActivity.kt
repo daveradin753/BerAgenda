@@ -1,5 +1,6 @@
 package com.example.beragenda.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -45,11 +46,15 @@ class AddBoardActivity : AppCompatActivity() {
 
 
         ivBackAddBoard.setOnClickListener{
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
         ivChecklistAddBoard.setOnClickListener{
             addDataBoard()
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
             finish()
         }
 

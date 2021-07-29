@@ -38,6 +38,7 @@ class BoardCardActivity : AppCompatActivity() {
                 }
             }.attach()
         }
+
         val backBoardCard = findViewById<ImageView>(R.id.backBoardCard)
         backBoardCard.setOnClickListener {
             finish()

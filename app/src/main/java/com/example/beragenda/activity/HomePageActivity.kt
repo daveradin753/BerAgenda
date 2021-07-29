@@ -42,6 +42,8 @@ class HomePageActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
+        getDataBoards()
+
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
@@ -65,7 +67,6 @@ class HomePageActivity : AppCompatActivity() {
         toogle.syncState()
 
         NavigationDrawer()
-        getDataBoards()
 
     }
 
@@ -151,25 +152,29 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun getDataBoards() {
-
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val adapter = BoardCustomAdapter(dataBoards)
-
-        rvBoards.layoutManager = layoutManager
-        rvBoards.adapter = adapter
-
+        dataBoards.clear()
         val uid = auth.currentUser?.uid.toString()
         database.collection("boards")
-            .whereEqualTo("user_id", uid)
+            .whereArrayContains("user_id", uid)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val project_name = document.getString("project_name").toString()
                     val board_id = document.getString("board_id").toString()
+                    val list: List<String> = listOf(document.get("user_id").toString())
 //                    val test = document.data
+//                    val project_name = test.get("project_name")
 
-                    Log.d("DATA BOARD", "Succesfully fetched data board!")
-                    dataBoards.add(Boards(project_name, board_id))
+//                    Log.e("Test", "$project_name")
+//                    Log.d("DATA BOARD", "Succesfully fetched data board!")
+                    dataBoards.add(Boards(project_name, board_id, list))
+
+                    val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                    val adapter = BoardCustomAdapter(dataBoards)
+
+                    rvBoards.layoutManager = layoutManager
+                    rvBoards.setHasFixedSize(true)
+                    rvBoards.adapter = adapter
                 }
             }
             .addOnFailureListener {
