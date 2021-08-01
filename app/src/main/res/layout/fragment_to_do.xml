@@ -15,22 +15,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAddCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="26dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true">
-
-            <ImageView
-                android:id="@+id/btnAddCard"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:src="@drawable/ic_add"
-                android:background="#16CCBD"/>
-
-        </androidx.cardview.widget.CardView>
+            android:layout_margin="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/plus_icon"
+            android:background="#16CCBD"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.example.beragenda.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.activity.BoardCardActivity
+import com.example.beragenda.fragment.ToDoFragment
 import com.example.beragenda.model.Boards
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -44,11 +46,22 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
             val project_name = dataset[position].project_name
 //            val user_id = dataset[position].user_id
 
+
+////            intent.putStringArrayListExtra("user_id", user_id)
+
+//            val bundle = Bundle()
+//            val toDoFragment = ToDoFragment()
+//            bundle.putString("board_id", board_id)
+//            bundle.putString("project_name", project_name)
+//            toDoFragment.arguments = bundle
+//            Log.d("PASS DATA BOARD", "data board -> $board_id")
+
             val intent = Intent(holder.itemView.context, BoardCardActivity::class.java)
             intent.putExtra("board_id", board_id)
             intent.putExtra("project_name", project_name)
-//            intent.putStringArrayListExtra("user_id", user_id)
             holder.itemView.context.startActivity(intent)
+
+
         }
         holder.ivBoardsImage
     }

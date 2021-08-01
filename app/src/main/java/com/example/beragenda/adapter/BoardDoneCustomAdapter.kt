@@ -23,7 +23,7 @@ class BoardDoneCustomAdapter(private val dataset: List<DoneCards>) :
 
         init {
             tvCardDoneContext = view.findViewById(R.id.tvCardDoneContext)
-            btnEditDoneCard = view.findViewById(R.id.btnEditBoard)
+            btnEditDoneCard = view.findViewById(R.id.btnEditDoneCard)
             btnDeleteDoneCard = view.findViewById(R.id.btnDeleteDoneCard)
             btnBackDoneCard = view.findViewById(R.id.btnBackDoneCard)
 

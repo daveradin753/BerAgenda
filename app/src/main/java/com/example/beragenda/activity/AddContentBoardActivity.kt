@@ -1,5 +1,6 @@
 package com.example.beragenda.activity
 
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,8 +37,9 @@ class AddContentBoardActivity : AppCompatActivity() {
         }
         checklistAddContentBoard.setOnClickListener {
             addDataCard()
+            val intent = Intent(this, BoardCardActivity::class.java)
+            startActivity(intent)
             finish()
-
         }
 
     }
