@@ -44,9 +44,8 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
         holder.itemView.setOnClickListener {
             val board_id = dataset[position].board_id
             val project_name = dataset[position].project_name
+
 //            val user_id = dataset[position].user_id
-
-
 ////            intent.putStringArrayListExtra("user_id", user_id)
 
 //            val bundle = Bundle()
@@ -60,7 +59,6 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
             intent.putExtra("board_id", board_id)
             intent.putExtra("project_name", project_name)
             holder.itemView.context.startActivity(intent)
-
 
         }
         holder.ivBoardsImage

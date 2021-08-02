@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
@@ -21,7 +22,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
-class ToDoFragment : Fragment() {
+class ToDoFragment(val board_id: String) : Fragment() {
 
     private lateinit var rvBoardsToDo: RecyclerView
     private lateinit var btnAddCard: View
@@ -47,12 +48,18 @@ class ToDoFragment : Fragment() {
 
         rvBoardsToDo = view.findViewById(R.id.rvBoardsToDO)
         btnAddCard = view.findViewById(R.id.btnAddCard)
-        val board_id = arguments?.getString("board_id")
-        val project_name = arguments?.getString("project_name")
+//        val board_id = arguments?.getString("board_id")
+//        val project_name = arguments?.getString("project_name")
+//        val bundle = arguments?.getBundle("todoBundle")
+//        val board_id = bundle?.getString("board_id")
+//        val project_name = bundle?.getString("project_name")
         Log.d("GET TODO CARD", "Read todo card on $board_id successed!")
+//        Log.d("GET TODO CARD", "Read todo card on $project_name successed!")
+
+//        Toast.makeText(this.context, board_id, Toast.LENGTH_SHORT).show()
 
         database = Firebase.firestore
-        getToDoCard(board_id.toString())
+        getToDoCard(board_id)
 
         btnAddCard.setOnClickListener {
             val intent = Intent(this.context, AddContentBoardActivity::class.java)
@@ -79,7 +86,6 @@ class ToDoFragment : Fragment() {
                     rvBoardsToDo.layoutManager = layoutManager
                     rvBoardsToDo.setHasFixedSize(true)
                     rvBoardsToDo.adapter = adapter
-
 
                 }
             }

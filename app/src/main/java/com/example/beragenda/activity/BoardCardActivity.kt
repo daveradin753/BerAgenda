@@ -29,7 +29,12 @@ class BoardCardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         tvSelectedBoardTitle = findViewById(R.id.tvSelectedBoardTitle)
-        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
+
+        val project_name = intent.getStringExtra("project_name")
+        val board_id = intent.getStringExtra("board_id")
+        tvSelectedBoardTitle.setText(project_name)
+
+        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, board_id.toString())
 
         with(binding){
             viewPager.adapter = viewPagerAdapter
@@ -42,9 +47,7 @@ class BoardCardActivity : AppCompatActivity() {
                 }
             }.attach()
         }
-        val project_name = intent.getStringExtra("project_name")
-        val board_id = intent.getStringExtra("board_id")
-        tvSelectedBoardTitle.setText(project_name)
+
 
         val backBoardCard = findViewById<ImageView>(R.id.backBoardCard)
         backBoardCard.setOnClickListener {
