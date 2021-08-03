@@ -1,14 +1,18 @@
 package com.example.beragenda.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import com.example.beragenda.R
+import com.example.beragenda.model.Boards
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class EditBoardActivity : AppCompatActivity() {
 
@@ -39,6 +43,37 @@ class EditBoardActivity : AppCompatActivity() {
         ivWarna4EditBoard = findViewById(R.id.iv4EditBoard)
         ivWarna5EditBoard = findViewById(R.id.iv5EditBoard)
         auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid.toString()
+        Log.d("UID", uid)
 
+        ivBackEditBoard.setOnClickListener{
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        ivChecklistEditBoard.setOnClickListener{
+            updateDataBoard(uid)
+            val intent = Intent(this, HomePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+    }
+
+    private fun updateDataBoard(uid: String) {
+
+        val uuid : UUID = UUID.randomUUID()
+        val board_id: String = uuid.toString()
+        val project_name: String = etEnterTitleEditBoard.text.toString()
+        val board = Boards(project_name, board_id, listOf(uid))
+
+        database.collection("boards").document(board_id).set(board)
+            .addOnSuccessListener {
+                Log.d("ADD Board", "Board has been added!")
+            }
+            .addOnFailureListener{ e ->
+                Log.e("ADD BOARD", "Add board error!", e)
+            }
     }
 }
