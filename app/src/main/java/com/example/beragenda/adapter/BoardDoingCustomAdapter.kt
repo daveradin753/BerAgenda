@@ -1,6 +1,7 @@
 package com.example.beragenda.adapter
 
 import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,15 @@ import com.example.beragenda.R
 import com.example.beragenda.model.Boards
 import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class BoardDoingCustomAdapter(private val dataset: MutableList<TasksBoard>) :
+class BoardDoingCustomAdapter(private val dataset: MutableList<TasksBoard>,
+private val board_id: String) :
         RecyclerView.Adapter<BoardDoingCustomAdapter.ViewHolder>() {
+
+    private lateinit var database: FirebaseFirestore
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvCardDoingContext: TextView
@@ -29,7 +36,6 @@ class BoardDoingCustomAdapter(private val dataset: MutableList<TasksBoard>) :
             btnDeleteDoingCard = view.findViewById(R.id.btnDeleteDoingCard)
             btnForwardDoingCard = view.findViewById(R.id.btnForwardDoingCard)
             btnBackDoingCard = view.findViewById(R.id.btnBackDoingCard)
-
         }
     }
 
@@ -41,11 +47,53 @@ class BoardDoingCustomAdapter(private val dataset: MutableList<TasksBoard>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        database = Firebase.firestore
         holder.tvCardDoingContext.text = dataset[position].task_name
-//        holder.ivBoardsImage
+        holder.btnBackDoingCard.setOnClickListener {
+            database.collection("boards").document(board_id).collection("tasks").document(dataset[position].task_id)
+                .update("type", 0)
+                .addOnSuccessListener {
+                    Log.d("DOING CARD", "Update doing card completed!")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("DOING CARD", "Update doing card failed!", e)
+                }
+            dataset.removeAt(position)
+            notifyDataSetChanged()
+        }
+        holder.btnDeleteDoingCard.setOnClickListener {
+            deleteDoingCard(dataset[position].task_id)
+            dataset.removeAt(position)
+            notifyDataSetChanged()
+        }
+        holder.btnForwardDoingCard.setOnClickListener {
+            database.collection("boards").document(board_id).collection("tasks").document(dataset[position].task_id)
+                .update("type", 2)
+                .addOnSuccessListener {
+                    Log.d("DOING CARD", "Update doing card completed!")
+                }
+                .addOnFailureListener { e ->
+                    Log.e("DOING CARD", "Update doing card failed!", e)
+                }
+            dataset.removeAt(position)
+            notifyDataSetChanged()
+        }
+
+
     }
 
     override fun getItemCount(): Int {
         return dataset.size
+    }
+
+    private fun deleteDoingCard(task_id: String) {
+        database.collection("boards").document(board_id).collection("tasks").document(task_id)
+            .delete()
+            .addOnSuccessListener {
+                Log.d("DOING CARD", "Delete doing card completed!")
+            }
+            .addOnFailureListener { e ->
+                Log.e("DOING CARD", "Delete doing card failed!", e)
+            }
     }
 }

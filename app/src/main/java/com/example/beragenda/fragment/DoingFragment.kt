@@ -54,7 +54,7 @@ class DoingFragment(val board_id: String) : Fragment() {
                     dataDoingCards.add(TasksBoard(task_id, task_name, type))
 
                     val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-                    val adapter = BoardDoingCustomAdapter(dataDoingCards)
+                    val adapter = BoardDoingCustomAdapter(dataDoingCards, board_id)
 
                     rvBoardsDoing.layoutManager = layoutManager
                     rvBoardsDoing.setHasFixedSize(true)

@@ -90,7 +90,6 @@ class ToDoFragment(val board_id: String) : Fragment() {
                     rvBoardsToDo.setHasFixedSize(true)
                     rvBoardsToDo.adapter = adapter
 
-
                 }
             }
 
