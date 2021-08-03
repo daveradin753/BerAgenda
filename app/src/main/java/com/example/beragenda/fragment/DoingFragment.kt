@@ -11,7 +11,7 @@ import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardDoingCustomAdapter
 import com.example.beragenda.model.DoingCards
 
-class DoingFragment : Fragment() {
+class DoingFragment(val board_id: String) : Fragment() {
 
     private lateinit var rvBoardsDoing: RecyclerView
     private var dataDoingCards: MutableList<DoingCards> = ArrayList()

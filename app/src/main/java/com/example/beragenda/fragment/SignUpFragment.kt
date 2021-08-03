@@ -22,7 +22,6 @@ class SignUpFragment : Fragment() {
     private lateinit var etSignUpUsernameUser: EditText
     private lateinit var etSignUpPasswordUser: EditText
     private lateinit var btnSignUp: Button
-    private lateinit var btnBackSignUp: Button
     private lateinit var auth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
@@ -71,13 +70,6 @@ class SignUpFragment : Fragment() {
             signUp(email, password, username)
         }
 
-        btnBackSignUp.setOnClickListener {
-            fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.flSigninSignup, SignInFragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
     }
 
     private fun signUp(email: String, password: String, username: String) {

@@ -154,6 +154,7 @@ class HomePageActivity : AppCompatActivity() {
     private fun getDataBoards() {
         dataBoards.clear()
         val uid = auth.currentUser?.uid.toString()
+
         database.collection("boards")
             .whereArrayContains("user_id", uid)
             .get()

@@ -63,6 +63,7 @@ class ToDoFragment(val board_id: String) : Fragment() {
 
         btnAddCard.setOnClickListener {
             val intent = Intent(this.context, AddContentBoardActivity::class.java)
+            intent.putExtra("board_id", board_id)
             startActivity(intent)
         }
 

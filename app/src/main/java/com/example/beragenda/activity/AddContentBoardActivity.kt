@@ -31,12 +31,13 @@ class AddContentBoardActivity : AppCompatActivity() {
         backAddContentBoard = findViewById(R.id.backAddContentBoard)
         checklistAddContentBoard = findViewById(R.id.checklistAddContentBoard)
         tvAddCardContent = findViewById(R.id.tvAddCardContent)
+        val boardId = intent.getStringExtra("board_id").toString()
 
         backAddContentBoard.setOnClickListener {
             finish()
         }
         checklistAddContentBoard.setOnClickListener {
-            addDataCard()
+            addDataCard(boardId)
             val intent = Intent(this, BoardCardActivity::class.java)
             startActivity(intent)
             finish()
@@ -44,14 +45,12 @@ class AddContentBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataCard() {
+    private fun addDataCard(boardId: String) {
         val uuid: UUID = UUID.randomUUID()
         val task_id = uuid.toString()
         val task_name = tvAddCardContent.text.toString()
         val type = 0
         val task = TasksBoard(task_id, task_name, type)
-
-        val boardId = intent.getStringExtra("board_id").toString()
 
         database.collection("boards").document(boardId).collection("tasks").document(task_id)
             .set(task)

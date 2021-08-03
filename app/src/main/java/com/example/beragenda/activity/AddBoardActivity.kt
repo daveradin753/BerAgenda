@@ -43,6 +43,9 @@ class AddBoardActivity : AppCompatActivity() {
         ivWarna3 = findViewById(R.id.iv3)
         ivWarna4 = findViewById(R.id.iv4)
         ivWarna5 = findViewById(R.id.iv5)
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid.toString()
+        Log.d("UID", uid)
 
 
         ivBackAddBoard.setOnClickListener{
@@ -52,7 +55,7 @@ class AddBoardActivity : AppCompatActivity() {
         }
 
         ivChecklistAddBoard.setOnClickListener{
-            addDataBoard()
+            addDataBoard(uid)
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
             finish()
@@ -60,11 +63,9 @@ class AddBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataBoard(){
+    private fun addDataBoard(uid: String){
 
-        auth = FirebaseAuth.getInstance()
         val uuid : UUID = UUID.randomUUID()
-        val uid = auth.currentUser?.uid.toString()
         val board_id: String = uuid.toString()
         val project_name: String = etEnterTitleAddBoard.text.toString()
         val board = Boards(project_name, board_id, listOf(uid))

@@ -15,8 +15,8 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifeCycle : Lifecycle,v
         var fragment = Fragment()
         when(position){
             0 -> fragment = ToDoFragment(board_id)
-            1 -> fragment = DoingFragment()
-            2 -> fragment = DoneFragment()
+            1 -> fragment = DoingFragment(board_id)
+            2 -> fragment = DoneFragment(board_id)
         }
         return fragment
     }
