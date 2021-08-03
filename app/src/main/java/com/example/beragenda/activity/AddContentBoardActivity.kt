@@ -38,8 +38,8 @@ class AddContentBoardActivity : AppCompatActivity() {
         }
         checklistAddContentBoard.setOnClickListener {
             addDataCard(boardId)
-            val intent = Intent(this, BoardCardActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, BoardCardActivity::class.java)
+//            startActivity(intent)
             finish()
         }
 

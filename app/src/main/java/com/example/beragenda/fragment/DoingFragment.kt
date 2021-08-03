@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardDoingCustomAdapter
+import com.example.beragenda.adapter.BoardToDoCustomAdapter
 import com.example.beragenda.model.DoingCards
+import com.example.beragenda.model.TasksBoard
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class DoingFragment(val board_id: String) : Fragment() {
 
     private lateinit var rvBoardsDoing: RecyclerView
-    private var dataDoingCards: MutableList<DoingCards> = ArrayList()
+    private var dataDoingCards: MutableList<TasksBoard> = ArrayList()
+    private lateinit var database: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +32,37 @@ class DoingFragment(val board_id: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addDoingCard()
-
-        val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        val adapter = BoardDoingCustomAdapter(dataDoingCards)
 
         rvBoardsDoing = view.findViewById(R.id.rvBoardsDoing)
-        rvBoardsDoing.layoutManager = layoutManager
-        rvBoardsDoing.adapter = adapter
+        database = Firebase.firestore
+
+        getDoingCard(board_id)
+
+
     }
 
-    private fun addDoingCard () {
-        dataDoingCards.add(DoingCards("This is test card!"))
+    private fun getDoingCard(board_id: String) {
+        dataDoingCards.clear()
+        database.collection("boards").document(board_id).collection("tasks")
+            .whereEqualTo("type", 1)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val task_id = document.getString("task_id").toString()
+                    val task_name = document.getString("task_name").toString()
+                    val type: Int = document.getLong("type")!!.toInt()
+                    dataDoingCards.add(TasksBoard(task_id, task_name, type))
+
+                    val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+                    val adapter = BoardDoingCustomAdapter(dataDoingCards)
+
+                    rvBoardsDoing.layoutManager = layoutManager
+                    rvBoardsDoing.setHasFixedSize(true)
+                    rvBoardsDoing.adapter = adapter
+
+                }
+            }
+
     }
 
     companion object {

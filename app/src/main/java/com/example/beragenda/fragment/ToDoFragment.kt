@@ -65,6 +65,7 @@ class ToDoFragment(val board_id: String) : Fragment() {
             val intent = Intent(this.context, AddContentBoardActivity::class.java)
             intent.putExtra("board_id", board_id)
             startActivity(intent)
+
         }
 
     }
@@ -83,10 +84,12 @@ class ToDoFragment(val board_id: String) : Fragment() {
 
                     val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
                     val adapter = BoardToDoCustomAdapter(dataToDoCard, board_id)
+                    adapter.notifyDataSetChanged()
 
                     rvBoardsToDo.layoutManager = layoutManager
                     rvBoardsToDo.setHasFixedSize(true)
                     rvBoardsToDo.adapter = adapter
+
 
                 }
             }

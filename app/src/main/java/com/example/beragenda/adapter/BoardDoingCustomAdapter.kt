@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.model.Boards
 import com.example.beragenda.model.DoingCards
+import com.example.beragenda.model.TasksBoard
 
-class BoardDoingCustomAdapter(private val dataset: List<DoingCards>) :
+class BoardDoingCustomAdapter(private val dataset: MutableList<TasksBoard>) :
         RecyclerView.Adapter<BoardDoingCustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -40,7 +41,7 @@ class BoardDoingCustomAdapter(private val dataset: List<DoingCards>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvCardDoingContext.text = dataset[position].context
+        holder.tvCardDoingContext.text = dataset[position].task_name
 //        holder.ivBoardsImage
     }
 

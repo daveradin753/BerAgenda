@@ -49,7 +49,7 @@ class BoardToDoCustomAdapter (private val dataset: MutableList<TasksBoard>,
         }
         holder.btnForwardTodoCard.setOnClickListener {
             database = Firebase.firestore
-            database.collection("boards").document(board_id).collection("task").document(dataset[position].task_id)
+            database.collection("boards").document(board_id).collection("tasks").document(dataset[position].task_id)
                 .update("type", 1)
                 .addOnSuccessListener {
                     Log.d("TO DO CARD", "Update todo card completed!")
@@ -75,7 +75,7 @@ class BoardToDoCustomAdapter (private val dataset: MutableList<TasksBoard>,
 
     private fun deleteToDoCard(task_id: String) {
         database = Firebase.firestore
-        database.collection("boards").document(board_id).collection("task").document(task_id)
+        database.collection("boards").document(board_id).collection("tasks").document(task_id)
             .delete()
             .addOnSuccessListener {
                 Log.d("TO DO CARD", "Delete todo card completed!")
