@@ -38,6 +38,7 @@
     <string name="image_to_use">Image to use</string>
     <string name="enter_a_title">Enter a title</string>
     <string name="add_card">Add Card</string>
+    <string name="edit_board">Edit Board</string>
 
 
 </resources>

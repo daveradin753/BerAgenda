@@ -62,7 +62,11 @@ class EditBoardActivity : AppCompatActivity() {
     }
 
     private fun updateDataBoard(uid: String) {
+        val uuid : UUID = UUID.randomUUID()
+        val board_id: String = uuid.toString()
+        val project_name: String = etEnterTitleEditBoard.text.toString()
+        val board = Boards(project_name, board_id, listOf(uid))
 
-
+        database.collection("boards").document(project_name).update("project_name","asdadasdasd")
     }
 }
