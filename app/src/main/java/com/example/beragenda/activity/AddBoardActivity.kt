@@ -21,7 +21,7 @@ class AddBoardActivity : AppCompatActivity() {
     private lateinit var ivBackAddBoard : ImageView
     private lateinit var ivChecklistAddBoard : ImageView
     private lateinit var etEnterTitleAddBoard : EditText
-    private lateinit var ivProfilePictureAddBoarc : ImageView
+    private lateinit var ivProfilePictureAddBoard : ImageView
     private lateinit var ivWarna1 : ImageView
     private lateinit var ivWarna2 : ImageView
     private lateinit var ivWarna3 : ImageView
@@ -37,7 +37,7 @@ class AddBoardActivity : AppCompatActivity() {
         ivBackAddBoard = findViewById(R.id.ivBackAddBoard)
         ivChecklistAddBoard = findViewById(R.id.ivChecklistAddBoard)
         etEnterTitleAddBoard = findViewById(R.id.etEnterTitleAddBoard)
-        ivProfilePictureAddBoarc = findViewById(R.id.ivProfilePictureAddBoarc)
+        ivProfilePictureAddBoard = findViewById(R.id.ivProfilePictureAddBoard)
         ivWarna1 = findViewById(R.id.iv1)
         ivWarna2 = findViewById(R.id.iv2)
         ivWarna3 = findViewById(R.id.iv3)

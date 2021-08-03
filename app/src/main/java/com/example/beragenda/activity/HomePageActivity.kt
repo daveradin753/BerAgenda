@@ -34,6 +34,7 @@ class HomePageActivity : AppCompatActivity() {
     private var dataBoards: MutableList<Boards> = ArrayList()
     private lateinit var rvBoards: RecyclerView
     private lateinit var btnToAddBoardActivity: View
+    private lateinit var btnEditBoard : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,7 @@ class HomePageActivity : AppCompatActivity() {
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
         btnToAddBoardActivity = findViewById(R.id.btnToAddBoardActivity)
+        btnEditBoard = findViewById(R.id.btnEditBoard)
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
@@ -55,6 +57,7 @@ class HomePageActivity : AppCompatActivity() {
             val intent = Intent(this, AddBoardActivity::class.java)
             startActivity(intent)
         }
+
 
         val toogle = ActionBarDrawerToggle(
                 this,

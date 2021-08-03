@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.activity.AddBoardActivity
 import com.example.beragenda.activity.BoardCardActivity
+import com.example.beragenda.activity.EditBoardActivity
 import com.example.beragenda.fragment.ToDoFragment
 import com.example.beragenda.model.Boards
 import com.google.firebase.firestore.FirebaseFirestore
@@ -62,7 +63,7 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
 
         }
         holder.btnEditBoard.setOnClickListener {
-            val intent = Intent(holder.itemView.context, AddBoardActivity::class.java)
+            val intent = Intent(holder.itemView.context, EditBoardActivity::class.java)
             intent.putExtra("board_id", board_id)
             intent.putExtra("project_name", project_name)
             holder.itemView.context.startActivity(intent)
