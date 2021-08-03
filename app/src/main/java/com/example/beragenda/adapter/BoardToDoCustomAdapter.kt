@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.activity.AddContentBoardActivity
+import com.example.beragenda.activity.EditContentBoardActivity
 import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
 import com.example.beragenda.model.ToDoCards
@@ -61,7 +62,8 @@ class BoardToDoCustomAdapter (private val dataset: MutableList<TasksBoard>,
             notifyDataSetChanged()
         }
         holder.btnEditTodoCard.setOnClickListener {
-            val intent = Intent(holder.itemView.context, AddContentBoardActivity::class.java)
+            val intent = Intent(holder.itemView.context, EditContentBoardActivity::class.java)
+            intent.putExtra("board_id", board_id)
             intent.putExtra("task_id", dataset[position].task_id)
             intent.putExtra("task_name", dataset[position].task_name)
             intent.putExtra("type", dataset[position].type)

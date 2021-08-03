@@ -55,8 +55,8 @@ class AddBoardActivity : AppCompatActivity() {
 
         ivChecklistAddBoard.setOnClickListener{
             addDataBoard(uid)
-            val intent = Intent(this, HomePageActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, HomePageActivity::class.java)
+//            startActivity(intent)
             finish()
         }
 

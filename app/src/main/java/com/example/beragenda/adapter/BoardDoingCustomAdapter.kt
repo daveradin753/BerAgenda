@@ -1,5 +1,6 @@
 package com.example.beragenda.adapter
 
+import android.content.Intent
 import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
+import com.example.beragenda.activity.EditContentBoardActivity
 import com.example.beragenda.model.Boards
 import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
@@ -77,6 +79,14 @@ private val board_id: String) :
                 }
             dataset.removeAt(position)
             notifyDataSetChanged()
+        }
+        holder.btnEditDoingCard.setOnClickListener {
+            val intent = Intent(holder.itemView.context, EditContentBoardActivity::class.java)
+            intent.putExtra("board_id", board_id)
+            intent.putExtra("task_id", dataset[position].task_id)
+            intent.putExtra("task_name", dataset[position].task_name)
+            intent.putExtra("type", dataset[position].type)
+            holder.itemView.context.startActivity(intent)
         }
 
 
