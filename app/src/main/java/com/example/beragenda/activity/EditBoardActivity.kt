@@ -63,17 +63,6 @@ class EditBoardActivity : AppCompatActivity() {
 
     private fun updateDataBoard(uid: String) {
 
-        val uuid : UUID = UUID.randomUUID()
-        val board_id: String = uuid.toString()
-        val project_name: String = etEnterTitleEditBoard.text.toString()
-        val board = Boards(project_name, board_id, listOf(uid))
 
-        database.collection("boards").document(board_id).set(board)
-            .addOnSuccessListener {
-                Log.d("ADD Board", "Board has been added!")
-            }
-            .addOnFailureListener{ e ->
-                Log.e("ADD BOARD", "Add board error!", e)
-            }
     }
 }
