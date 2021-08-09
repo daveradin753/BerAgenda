@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardDoingCustomAdapter
-import com.example.beragenda.adapter.BoardToDoCustomAdapter
-import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -36,9 +34,14 @@ class DoingFragment(val board_id: String) : Fragment() {
         rvBoardsDoing = view.findViewById(R.id.rvBoardsDoing)
         database = Firebase.firestore
 
+//        getDoingCard(board_id)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         getDoingCard(board_id)
-
-
     }
 
     private fun getDoingCard(board_id: String) {

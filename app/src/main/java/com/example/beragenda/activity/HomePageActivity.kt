@@ -107,6 +107,7 @@ class HomePageActivity : AppCompatActivity() {
             }
             R.id.logOut -> {
                 logOut()
+                finish()
             }
         }
         return false

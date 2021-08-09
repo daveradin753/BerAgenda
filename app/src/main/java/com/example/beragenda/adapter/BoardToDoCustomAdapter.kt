@@ -1,6 +1,5 @@
 package com.example.beragenda.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,15 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
-import com.example.beragenda.activity.AddContentBoardActivity
 import com.example.beragenda.activity.EditContentBoardActivity
-import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
-import com.example.beragenda.model.ToDoCards
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
 
 class BoardToDoCustomAdapter (private val dataset: MutableList<TasksBoard>,
                               private val board_id: String) :

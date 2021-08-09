@@ -7,19 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.activity.AddContentBoardActivity
 import com.example.beragenda.adapter.BoardToDoCustomAdapter
 import com.example.beragenda.model.TasksBoard
-import com.example.beragenda.model.ToDoCards
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class ToDoFragment(val board_id: String) : Fragment() {
@@ -59,7 +54,7 @@ class ToDoFragment(val board_id: String) : Fragment() {
 //        Toast.makeText(this.context, board_id, Toast.LENGTH_SHORT).show()
 
         database = Firebase.firestore
-        getToDoCard(board_id)
+//        getToDoCard(board_id)
 
         btnAddCard.setOnClickListener {
             val intent = Intent(this.context, AddContentBoardActivity::class.java)
@@ -68,6 +63,11 @@ class ToDoFragment(val board_id: String) : Fragment() {
 
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getToDoCard(board_id)
     }
 
     private fun getToDoCard(board_id: String) {
