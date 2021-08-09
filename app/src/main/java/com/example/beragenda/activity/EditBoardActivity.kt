@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import com.example.beragenda.R
 import com.example.beragenda.model.Boards
 import com.google.firebase.auth.FirebaseAuth
@@ -46,14 +47,18 @@ class EditBoardActivity : AppCompatActivity() {
         val uid = auth.currentUser?.uid.toString()
         Log.d("UID", uid)
 
+        val board_id_edit: String = intent.getStringExtra("board_id").toString()
+        val project_name_edit:String = intent.getStringExtra("project_name").toString()
+
+        etEnterTitleEditBoard.setText(project_name_edit)
+
         ivBackEditBoard.setOnClickListener{
-            val intent = Intent(this, HomePageActivity::class.java)
-            startActivity(intent)
             finish()
         }
 
         ivChecklistEditBoard.setOnClickListener{
-            updateDataBoard(uid)
+            val project_name_new: String = etEnterTitleEditBoard.text.toString()
+            updateDataBoard(board_id_edit, project_name_new)
             val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
             finish()
@@ -61,12 +66,16 @@ class EditBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun updateDataBoard(uid: String) {
-        val uuid : UUID = UUID.randomUUID()
-        val board_id: String = uuid.toString()
-        val project_name: String = etEnterTitleEditBoard.text.toString()
-        val board = Boards(project_name, board_id, listOf(uid))
+    private fun updateDataBoard(board_id: String, project_name: String) {
 
-        database.collection("boards").document(project_name).update("project_name","asdadasdasd")
+        database.collection("boards").document(board_id)
+            .update("project_name", project_name)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Update board $project_name successfully!", Toast.LENGTH_SHORT)
+                Log.d("UPDATE BOARD", "Update board $board_id | $project_name successfully!")
+            }
+            .addOnFailureListener { e ->
+                Log.e("UPDATE BOARD", "Update board $board_id | $project_name failed!", e)
+            }
     }
 }

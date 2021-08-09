@@ -48,8 +48,8 @@ class AddBoardActivity : AppCompatActivity() {
         Log.d("UID", uid)
 
         ivBackAddBoard.setOnClickListener{
-            val intent = Intent(this, HomePageActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, HomePageActivity::class.java)
+//            startActivity(intent)
             finish()
         }
 
