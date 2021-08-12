@@ -63,6 +63,7 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         val toogle = ActionBarDrawerToggle(
                 this,
                 drawer_layout,
@@ -121,7 +122,7 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun NavigationDrawer() {
-
+        nav_view = findViewById(R.id.nav_view)
         nav_view.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_settings -> {
@@ -176,6 +177,11 @@ class HomePageActivity : AppCompatActivity() {
                     val project_name = document.getString("project_name").toString()
                     val board_id = document.getString("board_id").toString()
                     val list: List<String> = listOf(document.get("user_id").toString())
+//                    val test = document.data
+//                    val project_name = test.get("project_name")
+
+//                    Log.e("Test", "$project_name")
+//                    Log.d("DATA BOARD", "Succesfully fetched data board!")
                     dataBoards.add(Boards(project_name, board_id, list))
 
                     val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -195,7 +201,7 @@ class HomePageActivity : AppCompatActivity() {
         val uid = auth.currentUser?.uid.toString()
 
         database.collection("users")
-            .whereEqualTo("uid", uid)
+            .whereArrayContains("uid",uid)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {

@@ -113,7 +113,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/secondPanel"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstPanel">
@@ -148,11 +148,14 @@
             app:tint="@color/grey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/thirdPanel"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondPanel">
 
@@ -174,8 +177,8 @@
             android:id="@+id/iv1"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_baseline_brightness_1_24"
             android:contentDescription="@string/colors"
+            android:src="@drawable/ic_baseline_brightness_1_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/colorPicker"
             app:layout_constraintTop_toTopOf="parent"
@@ -187,8 +190,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="68dp"
-            android:src="@drawable/ic_baseline_brightness_1_24"
             android:contentDescription="@string/colors"
+            android:src="@drawable/ic_baseline_brightness_1_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/colorPicker"
             app:layout_constraintTop_toTopOf="parent"
@@ -200,8 +203,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="136dp"
-            android:src="@drawable/ic_baseline_brightness_1_24"
             android:contentDescription="@string/colors"
+            android:src="@drawable/ic_baseline_brightness_1_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/colorPicker"
             app:layout_constraintTop_toTopOf="parent"
@@ -213,8 +216,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="204dp"
-            android:src="@drawable/ic_baseline_brightness_1_24"
             android:contentDescription="@string/colors"
+            android:src="@drawable/ic_baseline_brightness_1_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/colorPicker"
             app:layout_constraintTop_toTopOf="parent"
@@ -226,8 +229,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="272dp"
-            android:src="@drawable/ic_baseline_brightness_1_24"
             android:contentDescription="@string/colors"
+            android:src="@drawable/ic_baseline_brightness_1_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/colorPicker"
             app:layout_constraintTop_toTopOf="parent"
@@ -235,5 +238,14 @@
             app:tint="@color/teal_700" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddBoardPicture"
+        android:layout_width="76dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/gallery"
+        app:layout_constraintStart_toStartOf="@+id/secondPanel"
+        app:layout_constraintTop_toBottomOf="@+id/secondPanel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
