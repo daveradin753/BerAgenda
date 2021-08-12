@@ -47,6 +47,7 @@ class AddBoardActivity : AppCompatActivity() {
         val uid = auth.currentUser?.uid.toString()
         Log.d("UID", uid)
 
+
         ivBackAddBoard.setOnClickListener{
 //            val intent = Intent(this, HomePageActivity::class.java)
 //            startActivity(intent)

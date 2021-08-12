@@ -39,6 +39,8 @@
     <string name="enter_a_title">Enter a title</string>
     <string name="add_card">Add Card</string>
     <string name="edit_board">Edit Board</string>
+    <string name="delete_all_card">Delete All Card</string>
+    <string name="members">Members</string>
 
 
 </resources>

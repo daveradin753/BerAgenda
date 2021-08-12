@@ -12,7 +12,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/profilepicture"
+        android:src="@drawable/icons8_test_account_70px_3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

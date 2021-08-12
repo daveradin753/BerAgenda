@@ -37,4 +37,7 @@
     <string name="image_to_use">Gambar yang dipakai</string>
     <string name="enter_a_title">Masukan judul</string>
     <string name="add_card">Tambah Kartu</string>
+    <string name="edit_board">Ubah Board</string>
+    <string name="delete_all_card">Hapus Semua Kartu</string>
+    <string name="members">Anggota</string>
 </resources>
