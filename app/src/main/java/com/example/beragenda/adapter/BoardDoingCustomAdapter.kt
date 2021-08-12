@@ -1,19 +1,15 @@
 package com.example.beragenda.adapter
 
 import android.content.Intent
-import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.activity.EditContentBoardActivity
-import com.example.beragenda.model.Boards
-import com.example.beragenda.model.DoingCards
 import com.example.beragenda.model.TasksBoard
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore

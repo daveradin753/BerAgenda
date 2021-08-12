@@ -112,6 +112,7 @@ class SignInFragment : Fragment() {
     private fun reload() {
         val intent = Intent(this.context, HomePageActivity::class.java)
         startActivity(intent)
+        Log.d("SIGN IN", "Reload account success!")
     }
 
     companion object {

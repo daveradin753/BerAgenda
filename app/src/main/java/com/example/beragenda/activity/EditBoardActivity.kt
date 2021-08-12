@@ -59,8 +59,6 @@ class EditBoardActivity : AppCompatActivity() {
         ivChecklistEditBoard.setOnClickListener{
             val project_name_new: String = etEnterTitleEditBoard.text.toString()
             updateDataBoard(board_id_edit, project_name_new)
-            val intent = Intent(this, HomePageActivity::class.java)
-            startActivity(intent)
             finish()
         }
 

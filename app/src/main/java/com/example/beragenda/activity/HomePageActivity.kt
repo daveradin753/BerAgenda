@@ -20,19 +20,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardCustomAdapter
 import com.example.beragenda.model.Boards
+import com.example.beragenda.model.Users
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class HomePageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var user: Users
     private lateinit var database : FirebaseFirestore
     private lateinit var drawer_layout: DrawerLayout
     private lateinit var nav_view: NavigationView
     private var dataBoards: MutableList<Boards> = ArrayList()
+    private var dataUser: MutableList<Users> = ArrayList()
     private lateinit var rvBoards: RecyclerView
     private lateinit var btnToAddBoardActivity: View
 
@@ -43,6 +47,7 @@ class HomePageActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
+        getUsername()
 //        getDataBoards()
 
         drawer_layout = findViewById(R.id.drawer_layout)
@@ -53,6 +58,12 @@ class HomePageActivity : AppCompatActivity() {
 
         val headerView = nav_view.getHeaderView(0)
         val tvUsername = headerView.findViewById<TextView>(R.id.tvNameNavigation)
+
+        val headerView = nav_view.getHeaderView(0)
+        val tvUsername = headerView.findViewById<TextView>(R.id.tvNameNavigation)
+            tvUsername.setText(user.username)
+        val tvEmail = headerView.findViewById<TextView>(R.id.tvUsername)
+            tvEmail.setText(user.email)
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
@@ -188,5 +199,21 @@ class HomePageActivity : AppCompatActivity() {
                 Log.e("DATA BOARD", "Failed fetch data board!", it)
             }
     }
+    private fun getUsername(){
+        dataUser.clear()
+        val uid = auth.currentUser?.uid.toString()
 
+        database.collection("users")
+            .whereArrayContains("uid",uid)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val username = document.getString("username").toString()
+                    val profilePicUri = document.getString("profilePicURL").toString()
+                    val email = document.getString("email").toString()
+                    user = Users(uid,username,email,profilePicUri)
+            }
+    }
+
+}
 }
