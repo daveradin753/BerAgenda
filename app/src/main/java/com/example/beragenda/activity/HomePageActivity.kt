@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,10 @@ class HomePageActivity : AppCompatActivity() {
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
         btnToAddBoardActivity = findViewById(R.id.btnToAddBoardActivity)
+        nav_view = findViewById(R.id.nav_view)
+
+        val headerView = nav_view.getHeaderView(0)
+        val tvUsername = headerView.findViewById<TextView>(R.id.tvNameNavigation)
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
@@ -56,13 +61,12 @@ class HomePageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         val toogle = ActionBarDrawerToggle(
-                this,
-                drawer_layout,
-                findViewById(R.id.boardsPageToolBar),
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close
+            this,
+            drawer_layout,
+            findViewById(R.id.boardsPageToolBar),
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toogle)
         toogle.syncState()
@@ -96,17 +100,18 @@ class HomePageActivity : AppCompatActivity() {
 
             R.id.iconSearch -> {
                 Toast.makeText(applicationContext, "Search Toolbar Clicked", Toast.LENGTH_SHORT)
-                        .show()
+                    .show()
             }
             R.id.iconNotification -> {
                 Toast.makeText(
-                        applicationContext,
-                        "Notification Toolbar Clicked",
-                        Toast.LENGTH_SHORT
+                    applicationContext,
+                    "Notification Toolbar Clicked",
+                    Toast.LENGTH_SHORT
                 ).show()
             }
             R.id.logOut -> {
                 logOut()
+                finish()
             }
         }
         return false
@@ -114,14 +119,14 @@ class HomePageActivity : AppCompatActivity() {
     }
 
     private fun NavigationDrawer() {
-        nav_view = findViewById(R.id.nav_view)
+
         nav_view.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_settings -> {
                     Toast.makeText(
-                            applicationContext,
-                            "Notification Toolbar Clicked",
-                            Toast.LENGTH_SHORT
+                        applicationContext,
+                        "Notification Toolbar Clicked",
+                        Toast.LENGTH_SHORT
                     ).show()
                     intent = Intent(this, SettingActivity::class.java)
                     startActivity(intent)
@@ -169,11 +174,6 @@ class HomePageActivity : AppCompatActivity() {
                     val project_name = document.getString("project_name").toString()
                     val board_id = document.getString("board_id").toString()
                     val list: List<String> = listOf(document.get("user_id").toString())
-//                    val test = document.data
-//                    val project_name = test.get("project_name")
-
-//                    Log.e("Test", "$project_name")
-//                    Log.d("DATA BOARD", "Succesfully fetched data board!")
                     dataBoards.add(Boards(project_name, board_id, list))
 
                     val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
