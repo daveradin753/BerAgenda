@@ -113,7 +113,7 @@ class AddBoardActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICTURE_CODE){
             image_uri = data?.data
-            Log.d("UPLOAD", "Upload picture : $image_uri")
+            Log.d("GET PICTURE", "Gallery picture : $image_uri")
             storage = FirebaseStorage.getInstance()
             storageReference = storage.getReference("boardpicture/" + etEnterTitleAddBoard.text.toString())
             val uploadTask = storageReference.putFile(image_uri!!)
@@ -127,7 +127,5 @@ class AddBoardActivity : AppCompatActivity() {
             // set gallery image to image view
         }
     }
-
-
 
 }

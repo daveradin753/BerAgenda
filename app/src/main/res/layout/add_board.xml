@@ -137,15 +137,14 @@
             android:layout_width="370dp"
             android:layout_height="120dp"
             android:background="@color/light_grey"
-            android:src="@drawable/ic_baseline_camera_alt_24"
+            android:src="@drawable/ic_baseline_photo_camera_24"
             android:contentDescription="@string/image_to_use"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/board_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.733"
-            app:tint="@color/grey" />
+            app:layout_constraintVertical_bias="0.733"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

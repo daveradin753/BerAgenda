@@ -201,7 +201,7 @@ class HomePageActivity : AppCompatActivity() {
         val uid = auth.currentUser?.uid.toString()
 
         database.collection("users")
-            .whereArrayContains("uid",uid)
+            .whereEqualTo("uid", uid)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
@@ -216,7 +216,7 @@ class HomePageActivity : AppCompatActivity() {
                     val tvEmail = headerView.findViewById<TextView>(R.id.tvUsername)
                     tvEmail.setText(user.email)
             }
-    }
+        }
 
-}
+    }
 }
