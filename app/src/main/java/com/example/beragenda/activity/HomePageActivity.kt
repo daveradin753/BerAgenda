@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -47,14 +48,17 @@ class HomePageActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
-        getUsername()
-//        getDataBoards()
+
 
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
         btnToAddBoardActivity = findViewById(R.id.btnToAddBoardActivity)
-        nav_view = findViewById(R.id.nav_view)
+        val headerView = nav_view.getHeaderView(0)
+        val pictureProfile = headerView.findViewById<ImageView>(R.id.iv_ProfilePictureNavigation)
+
+        getUsername(headerView)
+//        getDataBoards()
 
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
@@ -196,7 +200,7 @@ class HomePageActivity : AppCompatActivity() {
                 Log.e("DATA BOARD", "Failed fetch data board!", it)
             }
     }
-    private fun getUsername(){
+    private fun getUsername(headerView: View){
         dataUser.clear()
         val uid = auth.currentUser?.uid.toString()
 
@@ -210,7 +214,6 @@ class HomePageActivity : AppCompatActivity() {
                     val email = document.getString("email").toString()
                     user = Users(uid,username,email,profilePicUri)
 
-                    val headerView = nav_view.getHeaderView(0)
                     val tvUsername = headerView.findViewById<TextView>(R.id.tvNameNavigation)
                     tvUsername.setText(user.username)
                     val tvEmail = headerView.findViewById<TextView>(R.id.tvUsername)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -37,18 +38,21 @@ class AddContentBoardActivity : AppCompatActivity() {
             finish()
         }
         checklistAddContentBoard.setOnClickListener {
-            addDataCard(boardId)
-//            val intent = Intent(this, BoardCardActivity::class.java)
-//            startActivity(intent)
+            val task_name = tvAddCardContent.text.toString()
+
+            if (TextUtils.isEmpty(task_name)) {
+                tvAddCardContent.error = getString(R.string.content_required)
+                return@setOnClickListener
+            }
+            addDataCard(boardId, task_name)
             finish()
         }
 
     }
 
-    private fun addDataCard(boardId: String) {
+    private fun addDataCard(boardId: String, task_name: String) {
         val uuid: UUID = UUID.randomUUID()
         val task_id = uuid.toString()
-        val task_name = tvAddCardContent.text.toString()
         val type = 0
         val task = TasksBoard(task_id, task_name, type)
 

@@ -46,7 +46,6 @@ class SignUpFragment : Fragment() {
         btnSignUp = view.findViewById(R.id.btnSignUp)
 
         val SignInFragment = SignInFragment()
-        val fragmentManager = fragmentManager
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
 
@@ -82,6 +81,7 @@ class SignUpFragment : Fragment() {
                 val user = Users(uid, username, email)
                 database.collection("users").document(uid).set(user)
                     .addOnSuccessListener {
+                        val fragmentManager = fragmentManager
                         Toast.makeText(this.context, "Registration successful!", Toast.LENGTH_SHORT).show()
                         fragmentManager?.beginTransaction()?.apply {
                             replace(R.id.flSigninSignup, signInFragment)

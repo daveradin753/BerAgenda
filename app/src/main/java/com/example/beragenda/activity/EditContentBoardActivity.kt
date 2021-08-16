@@ -2,6 +2,7 @@ package com.example.beragenda.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
@@ -36,6 +37,11 @@ class EditContentBoardActivity : AppCompatActivity() {
 
         checklistEditContentBoard.setOnClickListener {
             val task_name_new: String = etEditCardContent.text.toString()
+
+            if (TextUtils.isEmpty(task_name_new)) {
+                etEditCardContent.error = getString(R.string.content_required)
+                return@setOnClickListener
+            }
             editContentBoard(board_id_edit, task_id_edit, task_name_new)
             finish()
         }
