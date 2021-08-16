@@ -2,6 +2,7 @@ package com.example.beragenda.activity
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -181,12 +182,13 @@ class HomePageActivity : AppCompatActivity() {
                     val project_name = document.getString("project_name").toString()
                     val board_id = document.getString("board_id").toString()
                     val list: List<String> = listOf(document.get("user_id").toString())
+                    val imageURL = document.getString("board_imageURL").toString()
 //                    val test = document.data
 //                    val project_name = test.get("project_name")
 
 //                    Log.e("Test", "$project_name")
 //                    Log.d("DATA BOARD", "Succesfully fetched data board!")
-                    dataBoards.add(Boards(project_name, board_id, list))
+                    dataBoards.add(Boards(project_name, board_id, list, imageURL))
 
                     val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                     val adapter = BoardCustomAdapter(dataBoards)
