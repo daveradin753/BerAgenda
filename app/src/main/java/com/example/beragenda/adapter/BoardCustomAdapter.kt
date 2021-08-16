@@ -59,6 +59,11 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
 //            toDoFragment.arguments = bundle
 //            Log.d("PASS DATA BOARD", "data board -> $board_id")
 
+            val intent = Intent(holder.itemView.context, BoardCardActivity::class.java)
+            intent.putExtra("board_id", board_id)
+            intent.putExtra("project_name", project_name)
+            holder.itemView.context.startActivity(intent)
+
         }
         holder.btnEditBoard.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditBoardActivity::class.java)
