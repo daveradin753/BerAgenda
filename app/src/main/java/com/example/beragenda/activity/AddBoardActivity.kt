@@ -72,7 +72,7 @@ class AddBoardActivity : AppCompatActivity() {
         }
 
         ivChecklistAddBoard.setOnClickListener{
-            addDataBoard(uid)
+            addDataBoard(uid, imageurl!!)
 //            val intent = Intent(this, HomePageActivity::class.java)
 //            startActivity(intent)
             finish()
@@ -84,12 +84,12 @@ class AddBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataBoard(uid: String){
+    private fun addDataBoard(uid: String, imageurl: Uri){
 
         val uuid : UUID = UUID.randomUUID()
         val board_id: String = uuid.toString()
         val project_name: String = etEnterTitleAddBoard.text.toString()
-        val board = Boards(project_name, board_id, listOf(uid))
+        val board = Boards(project_name, board_id, listOf(uid), imageurl.toString())
 
         database.collection("boards").document(board_id).set(board)
             .addOnSuccessListener {
