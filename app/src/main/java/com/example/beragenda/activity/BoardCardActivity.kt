@@ -1,8 +1,10 @@
 package com.example.beragenda.activity
 
+import android.content.ContentValues.TAG
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.viewpager.widget.ViewPager
@@ -16,6 +18,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import org.w3c.dom.Text
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class BoardCardActivity : AppCompatActivity() {
 
@@ -23,11 +28,13 @@ class BoardCardActivity : AppCompatActivity() {
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     private lateinit var tvSelectedBoardTitle: TextView
     private lateinit var btnBoardCardDialog: ImageView
+    private lateinit var database : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBoardCardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        database = Firebase.firestore
 
         tvSelectedBoardTitle = findViewById(R.id.tvSelectedBoardTitle)
         btnBoardCardDialog = findViewById(R.id.btnBoardCardDialog)
@@ -63,7 +70,20 @@ class BoardCardActivity : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener { items ->
                 when(items.itemId) {
                     R.id.delete_all_card -> {
-                        Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
+                        database.collection("boards")
+                            .get()
+                            .addOnSuccessListener { result ->
+                                for (document in result) {
+                                    val docId=document.id
+                                    database.collection("boards").document(docId)
+                                        .delete()
+                                    Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Toast.makeText(this, "Delete all card has failed!", Toast.LENGTH_SHORT).show()
+                            }
+
                     }
                     R.id.members -> {
                         Toast.makeText(this, "Open all members on this board!", Toast.LENGTH_SHORT).show()
