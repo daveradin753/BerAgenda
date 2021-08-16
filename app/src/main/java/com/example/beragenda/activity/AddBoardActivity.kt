@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -72,9 +73,20 @@ class AddBoardActivity : AppCompatActivity() {
         }
 
         ivChecklistAddBoard.setOnClickListener{
-            addDataBoard(uid, imageurl!!)
-//            val intent = Intent(this, HomePageActivity::class.java)
-//            startActivity(intent)
+            val uuid : UUID = UUID.randomUUID()
+            val board_id: String = uuid.toString()
+            val project_name: String = etEnterTitleAddBoard.text.toString()
+
+            if (TextUtils.isEmpty(project_name)) {
+                etEnterTitleAddBoard.error = getString(R.string.board_title_required)
+                return@setOnClickListener
+            }
+            if (project_name.length >= 24) {
+                etEnterTitleAddBoard.error = getString(R.string.board_title_too_long)
+                return@setOnClickListener
+            }
+            addDataBoard(uid, imageurl!!, project_name, board_id)
+
             finish()
         }
 
@@ -84,11 +96,8 @@ class AddBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataBoard(uid: String, imageurl: Uri){
+    private fun addDataBoard(uid: String, imageurl: Uri, project_name: String, board_id: String){
 
-        val uuid : UUID = UUID.randomUUID()
-        val board_id: String = uuid.toString()
-        val project_name: String = etEnterTitleAddBoard.text.toString()
         val board = Boards(project_name, board_id, listOf(uid), imageurl.toString())
 
         database.collection("boards").document(board_id).set(board)

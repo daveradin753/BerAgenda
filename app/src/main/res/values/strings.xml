@@ -42,5 +42,7 @@
     <string name="delete_all_card">Delete All Card</string>
     <string name="members">Members</string>
     <string name="content_required">Card content is required!</string>
+    <string name="board_title_required">Board title required!</string>
+    <string name="board_title_too_long">Board title is too long!</string>
 
 </resources>

@@ -81,7 +81,6 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivBoardsImage: ImageView
         val tvBoardsTitle: TextView
-        val btnColorBoard: Button
         val btnDeleteBoard: Button
         val btnEditBoard: Button
         val cvBoard: CardView
@@ -89,7 +88,6 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
         init {
             ivBoardsImage = view.findViewById(R.id.ivBoardsImage)
             tvBoardsTitle = view.findViewById(R.id.tvBoardsTitle)
-            btnColorBoard = view.findViewById(R.id.btnColorBoard)
             btnDeleteBoard = view.findViewById(R.id.btnDeleteBoard)
             btnEditBoard = view.findViewById(R.id.btnEditBoard)
             cvBoard = view.findViewById(R.id.cvBoard)

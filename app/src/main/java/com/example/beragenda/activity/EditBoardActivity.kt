@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -36,6 +37,7 @@ class EditBoardActivity : AppCompatActivity() {
     private lateinit var ivWarna3EditBoard : ImageView
     private lateinit var ivWarna4EditBoard : ImageView
     private lateinit var ivWarna5EditBoard : ImageView
+    private lateinit var project_name_edit: String
     private lateinit var storage : FirebaseStorage
     private lateinit var storageReference : StorageReference
     private val GALLERY_PICTURE_CODE = 1001
@@ -63,7 +65,7 @@ class EditBoardActivity : AppCompatActivity() {
         Log.d("UID", uid)
 
         val board_id_edit: String = intent.getStringExtra("board_id").toString()
-        val project_name_edit:String = intent.getStringExtra("project_name").toString()
+        project_name_edit = intent.getStringExtra("project_name").toString()
         val board_picture_edit: String = intent.getStringExtra("board_imageURL").toString()
 
         ivProfilePictureEditBoard.load(board_picture_edit)
@@ -75,7 +77,16 @@ class EditBoardActivity : AppCompatActivity() {
 
         ivChecklistEditBoard.setOnClickListener{
             val project_name_new: String = etEnterTitleEditBoard.text.toString()
-            updateDataBoard(board_id_edit, project_name_new, board_picture_edit)
+
+            if (TextUtils.isEmpty(project_name_new)) {
+                etEnterTitleEditBoard.error = getString(R.string.board_title_required)
+                return@setOnClickListener
+            }
+            if (project_name_new.length >= 24) {
+                etEnterTitleEditBoard.error = getString(R.string.board_title_too_long)
+                return@setOnClickListener
+            }
+            updateDataBoard(board_id_edit, project_name_new, imageurl.toString())
             finish()
         }
 
@@ -113,7 +124,11 @@ class EditBoardActivity : AppCompatActivity() {
             image_uri = data?.data
             Log.d("GET PICTURE", "Gallery picture : $image_uri")
             storage = FirebaseStorage.getInstance()
-            storageReference = storage.getReference("boardpicture/" + etEnterTitleEditBoard.text.toString())
+            val storageReferenceDelete = storage.getReference("boardpicture/" + project_name_edit)
+            storageReferenceDelete.delete()
+            val project_name_new = etEnterTitleEditBoard.text.toString()
+            storageReference = storage.getReference("boardpicture/" + project_name_new)
+
             val uploadTask = storageReference.putFile(image_uri!!)
             uploadTask.addOnSuccessListener {
                 storageReference.downloadUrl.addOnCompleteListener {
