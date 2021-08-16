@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.beragenda.R
 import com.example.beragenda.activity.AddBoardActivity
 import com.example.beragenda.activity.BoardCardActivity
@@ -39,6 +40,8 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val board_id = dataset[position].board_id
         val project_name = dataset[position].project_name
+        val board_imageURL = dataset[position].board_imageURL
+        holder.ivBoardsImage.load(board_imageURL)
         holder.tvBoardsTitle.text = dataset[position].project_name
         holder.btnDeleteBoard.setOnClickListener {
             deleteDataBoard(dataset[position].board_id)
@@ -56,16 +59,12 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
 //            toDoFragment.arguments = bundle
 //            Log.d("PASS DATA BOARD", "data board -> $board_id")
 
-            val intent = Intent(holder.itemView.context, BoardCardActivity::class.java)
-            intent.putExtra("board_id", board_id)
-            intent.putExtra("project_name", project_name)
-            holder.itemView.context.startActivity(intent)
-
         }
         holder.btnEditBoard.setOnClickListener {
             val intent = Intent(holder.itemView.context, EditBoardActivity::class.java)
             intent.putExtra("board_id", board_id)
             intent.putExtra("project_name", project_name)
+            intent.putExtra("board_imageURL", board_imageURL)
             holder.itemView.context.startActivity(intent)
         }
     }
