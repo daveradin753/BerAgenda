@@ -1,6 +1,8 @@
 package com.example.beragenda.activity
 
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -61,14 +63,12 @@ class HomePageActivity : AppCompatActivity() {
 
         getUsername(headerView)
 //        getDataBoards()
-
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
         btnToAddBoardActivity.setOnClickListener {
             val intent = Intent(this, AddBoardActivity::class.java)
             startActivity(intent)
         }
-
 
         val toogle = ActionBarDrawerToggle(
                 this,
@@ -120,9 +120,17 @@ class HomePageActivity : AppCompatActivity() {
 //            }
             R.id.logOut -> {
                 val builder = AlertDialog.Builder(this)
+                val uid = auth.currentUser?.uid
 
-
-                logOut()
+                builder.setMessage(R.string.logout_dialog)
+                    .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { dialog, which ->
+                        logOut()
+                        Toast.makeText(this, R.string.logout_success, Toast.LENGTH_SHORT).show()
+                    })
+                    .setNegativeButton(R.string.no, DialogInterface.OnClickListener {dialog, which ->
+                        Log.d("Logout Button", "Logout success: $uid")
+                    })
+                    .show()
             }
         }
         return false

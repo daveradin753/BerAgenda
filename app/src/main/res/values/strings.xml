@@ -44,5 +44,9 @@
     <string name="content_required">Card content is required!</string>
     <string name="board_title_required">Board title required!</string>
     <string name="board_title_too_long">Board title is too long!</string>
+    <string name="logout_dialog">Are you sure want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="logout_success">Logout success</string>
+    <string name="no">No</string>
 
 </resources>
