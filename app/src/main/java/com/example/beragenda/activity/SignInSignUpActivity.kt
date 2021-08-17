@@ -16,7 +16,6 @@ class SignInSignUpActivity : AppCompatActivity() {
 //        actionBar?.hide()
 //        supportActionBar?.hide()
 
-
         fragmentManager.beginTransaction().apply {
             replace(R.id.flSigninSignup, SignInFragment)
             addToBackStack(null)

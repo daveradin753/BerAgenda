@@ -53,7 +53,6 @@ class HomePageActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
 
-
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
