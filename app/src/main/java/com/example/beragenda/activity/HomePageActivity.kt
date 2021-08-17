@@ -1,11 +1,13 @@
 package com.example.beragenda.activity
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -22,6 +24,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardCustomAdapter
 import com.example.beragenda.model.Boards
@@ -32,6 +36,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import org.w3c.dom.Text
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -44,6 +51,15 @@ class HomePageActivity : AppCompatActivity() {
     private var dataUser: MutableList<Users> = ArrayList()
     private lateinit var rvBoards: RecyclerView
     private lateinit var btnToAddBoardActivity: View
+    private lateinit var storage: FirebaseStorage
+    private lateinit var storageReference: StorageReference
+    private lateinit var tvUsername: TextView
+    private lateinit var tvEmail: TextView
+    private lateinit var pictureProfile: ImageView
+    private lateinit var uid: String
+    private val GALLERY_PICTURE_CODE = 1001
+    var image_uri : Uri? = null
+    var imageurl : Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,21 +68,29 @@ class HomePageActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = Firebase.firestore
+        uid = auth.currentUser?.uid.toString()
 
         drawer_layout = findViewById(R.id.drawer_layout)
         nav_view = findViewById(R.id.nav_view)
         rvBoards = findViewById(R.id.rvBoards)
         btnToAddBoardActivity = findViewById(R.id.btnToAddBoardActivity)
         val headerView = nav_view.getHeaderView(0)
-        val pictureProfile = headerView.findViewById<ImageView>(R.id.iv_ProfilePictureNavigation)
+        pictureProfile = headerView.findViewById(R.id.iv_ProfilePictureNavigation)
 
-        getUsername(headerView)
+        tvEmail = headerView.findViewById(R.id.tvUsername)
+        tvUsername = headerView.findViewById(R.id.tvNameNavigation)
+
+        getUsername()
 //        getDataBoards()
         setSupportActionBar(findViewById(R.id.boardsPageToolBar))
 
         btnToAddBoardActivity.setOnClickListener {
             val intent = Intent(this, AddBoardActivity::class.java)
             startActivity(intent)
+        }
+
+        pictureProfile.setOnClickListener {
+            openGallery()
         }
 
         val toogle = ActionBarDrawerToggle(
@@ -212,9 +236,9 @@ class HomePageActivity : AppCompatActivity() {
                 Log.e("DATA BOARD", "Failed fetch data board!", it)
             }
     }
-    private fun getUsername(headerView: View){
+
+    private fun getUsername(){
         dataUser.clear()
-        val uid = auth.currentUser?.uid.toString()
 
         database.collection("users")
             .whereEqualTo("uid", uid)
@@ -226,12 +250,57 @@ class HomePageActivity : AppCompatActivity() {
                     val email = document.getString("email").toString()
                     user = Users(uid,username,email,profilePicUri)
 
-                    val tvUsername = headerView.findViewById<TextView>(R.id.tvNameNavigation)
                     tvUsername.setText(user.username)
-                    val tvEmail = headerView.findViewById<TextView>(R.id.tvUsername)
                     tvEmail.setText(user.email)
+                    pictureProfile.load(user.profilePicURL) {
+                        placeholder(R.drawable.icons8_test_account_70px_3)
+                    }
             }
         }
 
     }
+
+    private fun openGallery(){
+        val gallery = Intent()
+        gallery.type = "image/*"
+        gallery.action = Intent.ACTION_GET_CONTENT
+        gallery.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
+
+        startActivityForResult(gallery, GALLERY_PICTURE_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICTURE_CODE){
+            image_uri = data?.data
+            Log.d("GET PICTURE", "Gallery picture : $image_uri")
+            storage = FirebaseStorage.getInstance()
+            storageReference = storage.getReference("userpictures/" + uid)
+            val uploadTask = storageReference.putFile(image_uri!!)
+            uploadTask.addOnSuccessListener {
+                storageReference.downloadUrl.addOnCompleteListener {
+                    imageurl = it.result
+                    Log.d("UPLOAD PICTURE", "Upload picture: $imageurl")
+                    pictureProfile.load(imageurl)
+                    updateProfilePicture(uid, imageurl.toString())
+                }
+            }
+            // set gallery image to image view
+        }
+    }
+
+    private fun updateProfilePicture(uid: String, imageURL: String) {
+        database.collection("users").document(uid)
+            .update("profilePicURL", imageURL)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Profile picture updated!", Toast.LENGTH_SHORT)
+                Log.d("UPDATE BOARD", "Profile picture $uid updated!")
+            }
+            .addOnFailureListener {
+                Log.d("UPDATE BOARD", "Profile picture $uid update error!")
+            }
+    }
+
+
 }

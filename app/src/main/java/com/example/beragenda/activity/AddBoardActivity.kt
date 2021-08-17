@@ -120,6 +120,7 @@ class AddBoardActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICTURE_CODE){
             image_uri = data?.data
             Log.d("GET PICTURE", "Gallery picture : $image_uri")

@@ -42,7 +42,7 @@
     <string name="members">Anggota</string>
     <string name="content_required">Isi konten harus diisi!</string>
     <string name="board_title_required">Judul board harus diisi!</string>
-    <string name="board_title_too_long">Board title is too long!</string>
+    <string name="board_title_too_long">Judul board terlalu panjang!</string>
     <string name="logout_dialog">Anda yakin ingin logout?</string>
     <string name="yes">Iya</string>
     <string name="logout_success">Logout berhasil</string>

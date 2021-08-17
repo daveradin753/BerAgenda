@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beragenda.R
 import com.example.beragenda.fragment.SignInFragment
+import com.google.firebase.auth.FirebaseAuth
 
 class SignInSignUpActivity : AppCompatActivity() {
     private val SignInFragment = SignInFragment()
@@ -26,7 +27,11 @@ class SignInSignUpActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        finish()
+        val auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null) {
+            finish()
+        }
+
     }
 
     override fun onBackPressed() {
