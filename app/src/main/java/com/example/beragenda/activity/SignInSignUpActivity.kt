@@ -25,4 +25,14 @@ class SignInSignUpActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
 }

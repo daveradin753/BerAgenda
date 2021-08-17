@@ -123,13 +123,13 @@ class HomePageActivity : AppCompatActivity() {
                 val uid = auth.currentUser?.uid
 
                 builder.setMessage(R.string.logout_dialog)
-                    .setPositiveButton(R.string.yes, DialogInterface.OnClickListener { dialog, which ->
+                    .setPositiveButton(R.string.yes) { _, _ ->
                         logOut()
                         Toast.makeText(this, R.string.logout_success, Toast.LENGTH_SHORT).show()
-                    })
-                    .setNegativeButton(R.string.no, DialogInterface.OnClickListener {dialog, which ->
+                    }
+                    .setNegativeButton(R.string.no) { _, _ ->
                         Log.d("Logout Button", "Logout success: $uid")
-                    })
+                    }
                     .show()
             }
         }
@@ -161,7 +161,6 @@ class HomePageActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.clear()
         auth.signOut()
-//        finish()
         intent = Intent(this, SignInSignUpActivity::class.java)
         startActivity(intent)
         finish()

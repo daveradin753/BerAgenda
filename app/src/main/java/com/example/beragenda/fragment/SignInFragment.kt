@@ -91,7 +91,6 @@ class SignInFragment : Fragment() {
             signIn(email, password)
         }
 
-
     }
 
     private fun signIn(email: String, password: String) {
