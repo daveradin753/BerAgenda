@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
@@ -106,20 +107,22 @@ class HomePageActivity : AppCompatActivity() {
 
         when (itemId) {
 
-            R.id.iconSearch -> {
-                Toast.makeText(applicationContext, "Search Toolbar Clicked", Toast.LENGTH_SHORT)
-                        .show()
-            }
-            R.id.iconNotification -> {
-                Toast.makeText(
-                        applicationContext,
-                        "Notification Toolbar Clicked",
-                        Toast.LENGTH_SHORT
-                ).show()
-            }
+//            R.id.iconSearch -> {
+//                Toast.makeText(applicationContext, "Search Toolbar Clicked", Toast.LENGTH_SHORT)
+//                        .show()
+//            }
+//            R.id.iconNotification -> {
+//                Toast.makeText(
+//                        applicationContext,
+//                        "Notification Toolbar Clicked",
+//                        Toast.LENGTH_SHORT
+//                ).show()
+//            }
             R.id.logOut -> {
+                val builder = AlertDialog.Builder(this)
+
+
                 logOut()
-                finish()
             }
         }
         return false
@@ -153,6 +156,7 @@ class HomePageActivity : AppCompatActivity() {
 //        finish()
         intent = Intent(this, SignInSignUpActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun checkTheme(context: Context) {
