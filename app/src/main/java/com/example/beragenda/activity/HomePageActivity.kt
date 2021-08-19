@@ -253,8 +253,11 @@ class HomePageActivity : AppCompatActivity() {
 
                     tvUsername.setText(user.username)
                     tvEmail.setText(user.email)
-                    pictureProfile.load(user.profilePicURL) {
-                        placeholder(R.drawable.icons8_test_account_70px_3)
+                    if (user.profilePicURL != "") {
+                        pictureProfile.load(user.profilePicURL)
+                    }
+                    else {
+                        pictureProfile.load(R.drawable.icons8_test_account_70px_3)
                     }
             }
         }
