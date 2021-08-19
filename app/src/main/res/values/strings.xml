@@ -48,5 +48,6 @@
     <string name="yes">Yes</string>
     <string name="logout_success">Logout success</string>
     <string name="no">No</string>
+    <string name="colorPickerButton">Color Picker Button</string>
 
 </resources>

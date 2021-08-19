@@ -8,9 +8,10 @@
     app:cardCornerRadius="12dp">
 
     <RelativeLayout
+        android:id="@+id/rlBoardCard"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:background="#6EF7C8">
+        android:background="@color/cyan">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBoard1"

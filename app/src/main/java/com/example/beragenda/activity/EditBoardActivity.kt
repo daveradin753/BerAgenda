@@ -2,6 +2,7 @@ package com.example.beragenda.activity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,8 @@ import android.widget.Toast
 import coil.load
 import com.example.beragenda.R
 import com.example.beragenda.model.Boards
+import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
+import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -32,17 +35,14 @@ class EditBoardActivity : AppCompatActivity() {
     private lateinit var etEnterTitleEditBoard : EditText
     private lateinit var ivProfilePictureEditBoard : ImageView
     private lateinit var btnEditBoardPicture : Button
-    private lateinit var ivWarna1EditBoard : ImageView
-    private lateinit var ivWarna2EditBoard : ImageView
-    private lateinit var ivWarna3EditBoard : ImageView
-    private lateinit var ivWarna4EditBoard : ImageView
-    private lateinit var ivWarna5EditBoard : ImageView
     private lateinit var project_name_edit: String
     private lateinit var storage : FirebaseStorage
     private lateinit var storageReference : StorageReference
+    private lateinit var ivColorPickerEditBoard: ImageView
     private val GALLERY_PICTURE_CODE = 1001
     var image_uri : Uri? = null
     var imageurl : Uri? = null
+    var hexColor : String = "#9EF5CF"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,12 +54,8 @@ class EditBoardActivity : AppCompatActivity() {
         etEnterTitleEditBoard = findViewById(R.id.etEnterTitleEditBoard)
         ivProfilePictureEditBoard = findViewById(R.id.ivProfilePictureEditBoard)
         btnEditBoardPicture = findViewById(R.id.btnEditBoardPicture)
-        ivWarna1EditBoard = findViewById(R.id.iv1EditBoard)
-        ivWarna2EditBoard = findViewById(R.id.iv2EditBoard)
-        ivWarna3EditBoard = findViewById(R.id.iv3EditBoard)
-        ivWarna4EditBoard = findViewById(R.id.iv4EditBoard)
-        ivWarna5EditBoard = findViewById(R.id.iv5EditBoard)
         ivProfilePictureEditBoard = findViewById(R.id.ivProfilePictureEditBoard)
+        ivColorPickerEditBoard = findViewById(R.id.ivColorPickerEditBoard)
         auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid.toString()
         Log.d("UID", uid)
@@ -67,12 +63,26 @@ class EditBoardActivity : AppCompatActivity() {
         val board_id_edit: String = intent.getStringExtra("board_id").toString()
         project_name_edit = intent.getStringExtra("project_name").toString()
         val board_picture_edit: String = intent.getStringExtra("board_imageURL").toString()
+        val board_hex_color_edit: String = intent.getStringExtra("board_hex_color").toString()
 
         ivProfilePictureEditBoard.load(board_picture_edit)
         etEnterTitleEditBoard.setText(project_name_edit)
+        ivColorPickerEditBoard.setBackgroundColor(Color.parseColor(board_hex_color_edit))
 
         ivBackEditBoard.setOnClickListener{
             finish()
+        }
+
+        ivColorPickerEditBoard.setOnClickListener {
+            MaterialColorPickerDialog.Builder(this)
+                .setTitle("Pick Color")
+                .setColorShape(ColorShape.CIRCLE)
+                .setColorRes(resources.getIntArray(R.array.boardColorBox))
+                .setColorListener { color, colorHex ->
+                    ivColorPickerEditBoard.setBackgroundColor(Color.parseColor(colorHex))
+                    hexColor = colorHex
+                }
+                .show()
         }
 
         ivChecklistEditBoard.setOnClickListener{
@@ -86,7 +96,13 @@ class EditBoardActivity : AppCompatActivity() {
                 etEnterTitleEditBoard.error = getString(R.string.board_title_too_long)
                 return@setOnClickListener
             }
-            updateDataBoard(board_id_edit, project_name_new, imageurl.toString())
+            //check if the image new or not
+            if (image_uri != null) {
+                updateDataBoard(board_id_edit, project_name_new, image_uri.toString(), hexColor)
+            }
+            if (image_uri == null) {
+                updateDataBoard(board_id_edit, project_name_new, board_picture_edit, hexColor)
+            }
             finish()
         }
 
@@ -96,10 +112,10 @@ class EditBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun updateDataBoard(board_id: String, project_name: String, board_imageURL : String) {
+    private fun updateDataBoard(board_id: String, project_name: String, board_imageURL : String, hexColor: String) {
 
         database.collection("boards").document(board_id)
-            .update("project_name", project_name, "board_imageURL", board_imageURL)
+            .update("project_name", project_name, "board_imageURL", board_imageURL, "board_hex_color", hexColor)
             .addOnSuccessListener {
                 Toast.makeText(this, "Update board $project_name successfully!", Toast.LENGTH_SHORT)
                 Log.d("UPDATE BOARD", "Update board $board_id | $project_name successfully!")

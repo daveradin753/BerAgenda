@@ -2,6 +2,7 @@ package com.example.beragenda.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -41,8 +42,11 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
         val board_id = dataset[position].board_id
         val project_name = dataset[position].project_name
         val board_imageURL = dataset[position].board_imageURL
+        val board_hex_color = dataset[position].board_hex_color
         holder.ivBoardsImage.load(board_imageURL)
         holder.tvBoardsTitle.text = dataset[position].project_name
+        holder.rlBoardCard.setBackgroundColor(Color.parseColor(board_hex_color))
+
         holder.btnDeleteBoard.setOnClickListener {
             deleteDataBoard(dataset[position].board_id)
             dataset.removeAt(position)
@@ -70,6 +74,7 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
             intent.putExtra("board_id", board_id)
             intent.putExtra("project_name", project_name)
             intent.putExtra("board_imageURL", board_imageURL)
+            intent.putExtra("board_hex_color", board_hex_color)
             holder.itemView.context.startActivity(intent)
         }
     }
@@ -84,6 +89,7 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
         val btnDeleteBoard: Button
         val btnEditBoard: Button
         val cvBoard: CardView
+        val rlBoardCard: RelativeLayout
 
         init {
             ivBoardsImage = view.findViewById(R.id.ivBoardsImage)
@@ -91,6 +97,7 @@ class BoardCustomAdapter(private val dataset: MutableList<Boards>) :
             btnDeleteBoard = view.findViewById(R.id.btnDeleteBoard)
             btnEditBoard = view.findViewById(R.id.btnEditBoard)
             cvBoard = view.findViewById(R.id.cvBoard)
+            rlBoardCard = view.findViewById(R.id.rlBoardCard)
 
 //            view.setOnClickListener {
 //                val intent = Intent(view.context, BoardCardActivity::class.java)

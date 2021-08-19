@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="boardColorBox">
+        <item>@color/blue</item>
+        <item>@color/light_blue</item>
+        <item>@color/green_light_blue</item>
+        <item>@color/white</item>
+        <item>@color/toska</item>
+        <item>@color/teal_700</item>
+
+    </string-array>
+    
+    
+<!--    <color name="blue">#0278AE</color>-->
+<!--    <color name="light_blue">#51DACF</color>-->
+<!--    <color name="cyan">#9EF5CF</color>-->
+<!--    <color name="green_light_blue">#E8FFC1</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
+<!--    <color name="toska">#16CCBD</color>-->
+<!--    <color name="teal_200">#FF03DAC5</color>-->
+<!--    <color name="teal_700">#FF018786</color>-->
+
+</resources>

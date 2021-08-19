@@ -3,6 +3,8 @@ package com.example.beragenda.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,9 +16,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import coil.load
 import com.example.beragenda.R
 import com.example.beragenda.model.Boards
+import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
+import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -36,14 +41,11 @@ class AddBoardActivity : AppCompatActivity() {
     private lateinit var etEnterTitleAddBoard : EditText
     private lateinit var ivProfilePictureAddBoard : ImageView
     private lateinit var btnAddBoardPicture : Button
-    private lateinit var ivWarna1 : ImageView
-    private lateinit var ivWarna2 : ImageView
-    private lateinit var ivWarna3 : ImageView
-    private lateinit var ivWarna4 : ImageView
-    private lateinit var ivWarna5 : ImageView
+    private lateinit var ivColorPickerAddBoard: ImageView
     private val GALLERY_PICTURE_CODE = 1001
     var image_uri : Uri? = null
     var imageurl : Uri? = null
+    var hexColor : String = "#9EF5CF"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,20 +58,26 @@ class AddBoardActivity : AppCompatActivity() {
         etEnterTitleAddBoard = findViewById(R.id.etEnterTitleAddBoard)
         ivProfilePictureAddBoard = findViewById(R.id.ivProfilePictureAddBoard)
         btnAddBoardPicture = findViewById(R.id.btnAddBoardPicture)
-        ivWarna1 = findViewById(R.id.iv1)
-        ivWarna2 = findViewById(R.id.iv2)
-        ivWarna3 = findViewById(R.id.iv3)
-        ivWarna4 = findViewById(R.id.iv4)
-        ivWarna5 = findViewById(R.id.iv5)
+        ivColorPickerAddBoard = findViewById(R.id.ivColorPickerAddBoard)
         auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid.toString()
         Log.d("UID", uid)
 
 
         ivBackAddBoard.setOnClickListener{
-//            val intent = Intent(this, HomePageActivity::class.java)
-//            startActivity(intent)
             finish()
+        }
+
+        ivColorPickerAddBoard.setOnClickListener {
+            MaterialColorPickerDialog.Builder(this)
+                .setTitle("Pick Color")
+                .setColorShape(ColorShape.CIRCLE)
+                .setColorRes(resources.getIntArray(R.array.boardColorBox))
+                .setColorListener { color, colorHex ->
+                    ivColorPickerAddBoard.setBackgroundColor(Color.parseColor(colorHex))
+                    hexColor = colorHex
+                }
+                .show()
         }
 
         ivChecklistAddBoard.setOnClickListener{
@@ -85,7 +93,7 @@ class AddBoardActivity : AppCompatActivity() {
                 etEnterTitleAddBoard.error = getString(R.string.board_title_too_long)
                 return@setOnClickListener
             }
-            addDataBoard(uid, imageurl!!, project_name, board_id)
+            addDataBoard(uid, imageurl!!, project_name, board_id, hexColor)
 
             finish()
         }
@@ -96,9 +104,9 @@ class AddBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataBoard(uid: String, imageurl: Uri, project_name: String, board_id: String){
+    private fun addDataBoard(uid: String, imageurl: Uri, project_name: String, board_id: String, hexColor: String){
 
-        val board = Boards(project_name, board_id, listOf(uid), imageurl.toString())
+        val board = Boards(project_name, board_id, listOf(uid), imageurl.toString(), hexColor)
 
         database.collection("boards").document(board_id).set(board)
             .addOnSuccessListener {

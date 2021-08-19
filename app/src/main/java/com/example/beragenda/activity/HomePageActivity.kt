@@ -217,12 +217,13 @@ class HomePageActivity : AppCompatActivity() {
                     val board_id = document.getString("board_id").toString()
                     val list: List<String> = listOf(document.get("user_id").toString())
                     val imageURL = document.getString("board_imageURL").toString()
+                    val board_hex_color = document.getString("board_hex_color").toString()
 //                    val test = document.data
 //                    val project_name = test.get("project_name")
 
 //                    Log.e("Test", "$project_name")
 //                    Log.d("DATA BOARD", "Succesfully fetched data board!")
-                    dataBoards.add(Boards(project_name, board_id, list, imageURL))
+                    dataBoards.add(Boards(project_name, board_id, list, imageURL, board_hex_color))
 
                     val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                     val adapter = BoardCustomAdapter(dataBoards)
