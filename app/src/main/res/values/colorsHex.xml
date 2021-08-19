@@ -2,12 +2,15 @@
 <resources>
 
     <string-array name="boardColorBox">
+
         <item>@color/blue</item>
         <item>@color/light_blue</item>
+        <item>@color/cyan</item>
         <item>@color/green_light_blue</item>
-        <item>@color/white</item>
+        <item>@color/light_yellow</item>
         <item>@color/toska</item>
         <item>@color/teal_700</item>
+        <item>@color/extra_light_blue</item>
 
     </string-array>
     
@@ -20,5 +23,7 @@
 <!--    <color name="toska">#16CCBD</color>-->
 <!--    <color name="teal_200">#FF03DAC5</color>-->
 <!--    <color name="teal_700">#FF018786</color>-->
+<!--    <color name="light_yellow">#E8C247</color>-->
+<!--    <color name="extra_light_blue">#A9C8E1</color>-->
 
 </resources>
