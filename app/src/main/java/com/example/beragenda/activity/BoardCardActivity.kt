@@ -69,22 +69,25 @@ class BoardCardActivity : AppCompatActivity() {
             popupMenu.inflate(R.menu.board_card_menu)
             popupMenu.setOnMenuItemClickListener { items ->
                 when(items.itemId) {
-                    R.id.delete_all_card -> {
-                        database.collection("boards")
-                            .get()
-                            .addOnSuccessListener { result ->
-                                for (document in result) {
-                                    val docId=document.id
-                                    database.collection("boards").document(docId)
-                                        .delete()
-                                    Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            .addOnFailureListener { exception ->
-                                Toast.makeText(this, "Delete all card has failed!", Toast.LENGTH_SHORT).show()
-                            }
-
-                    }
+//                    R.id.delete_all_card -> {
+//
+//                        //delete all board V
+//
+//                        database.collection("boards")
+//                            .get()
+//                            .addOnSuccessListener { result ->
+//                                for (document in result) {
+//                                    val docId=document.id
+//                                    database.collection("boards").document(docId)
+//                                        .delete()
+//                                    Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
+//                                }
+//                            }
+//                            .addOnFailureListener { exception ->
+//                                Toast.makeText(this, "Delete all card has failed!", Toast.LENGTH_SHORT).show()
+//                            }
+//
+//                    }
                     R.id.members -> {
                         Toast.makeText(this, "Open all members on this board!", Toast.LENGTH_SHORT).show()
                     }
