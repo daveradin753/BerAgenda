@@ -74,6 +74,7 @@ class SignUpFragment : Fragment() {
 
     }
 
+
     private fun signUp(email: String, password: String, username: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {

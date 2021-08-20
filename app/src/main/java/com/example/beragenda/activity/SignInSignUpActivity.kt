@@ -1,6 +1,7 @@
 package com.example.beragenda.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beragenda.R
 import com.example.beragenda.fragment.SignInFragment
@@ -9,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 class SignInSignUpActivity : AppCompatActivity() {
     private val SignInFragment = SignInFragment()
     private val fragmentManager = supportFragmentManager
+    private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +34,6 @@ class SignInSignUpActivity : AppCompatActivity() {
             finish()
         }
 
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
 
 }

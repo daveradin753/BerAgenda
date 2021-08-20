@@ -93,7 +93,7 @@ class AddBoardActivity : AppCompatActivity() {
                 etEnterTitleAddBoard.error = getString(R.string.board_title_too_long)
                 return@setOnClickListener
             }
-            addDataBoard(uid, imageurl!!, project_name, board_id, hexColor)
+            addDataBoard(uid, project_name, board_id, hexColor)
 
             finish()
         }
@@ -104,7 +104,7 @@ class AddBoardActivity : AppCompatActivity() {
 
     }
 
-    private fun addDataBoard(uid: String, imageurl: Uri, project_name: String, board_id: String, hexColor: String){
+    private fun addDataBoard(uid: String, project_name: String, board_id: String, hexColor: String){
 
         val board = Boards(project_name, board_id, listOf(uid), imageurl.toString(), hexColor)
 

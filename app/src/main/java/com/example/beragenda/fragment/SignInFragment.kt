@@ -25,6 +25,7 @@ class SignInFragment : Fragment() {
     private lateinit var etSignInPasswordUser: EditText
     private lateinit var btnSignin: Button
     private lateinit var auth: FirebaseAuth
+    private var count = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +60,7 @@ class SignInFragment : Fragment() {
 
         tvToSignUp.setOnClickListener {
             fragmentManager?.beginTransaction()?.apply {
+
                 replace(R.id.flSigninSignup, SignUpFragment)
                 addToBackStack(null)
                 commit()
@@ -67,6 +69,7 @@ class SignInFragment : Fragment() {
 
         tvForgotYourPasswordSignIn.setOnClickListener {
             fragmentManager?.beginTransaction()?.apply {
+
                 replace(R.id.flSigninSignup, ForgotPasswordFragment)
                 addToBackStack(null)
                 commit()
@@ -93,6 +96,7 @@ class SignInFragment : Fragment() {
         }
 
     }
+
 
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)

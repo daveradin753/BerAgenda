@@ -117,6 +117,11 @@ class HomePageActivity : AppCompatActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+//            val intent = Intent(this, SignInSignUpActivity::class.java)
+//            intent.putExtra("count", 1)
+//            startActivity(intent)
+//            SignInSignUpActivity().finish()
+            finish()
         }
     }
 

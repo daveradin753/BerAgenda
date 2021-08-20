@@ -43,68 +43,69 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="@+id/imageView2" />
 
-        <EditText
-            android:id="@+id/etSignupEmailUser"
-            android:layout_width="300dp"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:drawableStart="@drawable/icons8_email_48px"
-            android:drawablePadding="18dp"
-            android:hint="Email"
-            android:textColor="@color/black"
-            android:textColorHint="@color/common_google_signin_btn_text_light_default"
-            android:inputType="textEmailAddress"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.348">
 
-        <EditText
-            android:id="@+id/etSignupUsernameUser"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/icons8_username_48px"
-            android:drawablePadding="18dp"
-            android:inputType="text"
-            android:hint="Username"
-            android:textColor="@color/black"
-            android:textColorHint="@color/common_google_signin_btn_text_light_default"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSignupEmailUser" />
+            <EditText
+                android:id="@+id/etSignupEmailUser"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/icons8_email_48px"
+                android:drawablePadding="18dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/common_google_signin_btn_text_light_default" />
 
-        <EditText
-            android:id="@+id/etSignupPasswordUser"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/icons8_password_64px"
-            android:drawablePadding="18dp"
-            android:hint="Password"
-            android:textColor="@color/black"
-            android:textColorHint="@color/common_google_signin_btn_text_light_default"
-            android:inputType="textPassword"
-            android:imeOptions="actionDone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSignupUsernameUser" />
+            <EditText
+                android:id="@+id/etSignupUsernameUser"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/icons8_username_48px"
+                android:drawablePadding="18dp"
+                android:hint="Username"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/common_google_signin_btn_text_light_default" />
+
+            <EditText
+                android:id="@+id/etSignupPasswordUser"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/icons8_password_64px"
+                android:drawablePadding="18dp"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/common_google_signin_btn_text_light_default" />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignUp"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginTop="80dp"
             android:background="@drawable/signin_button_style"
-            android:text="Sign Up"
+            android:text="Create Account"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etSignupPasswordUser" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
