@@ -25,7 +25,6 @@ class SignInFragment : Fragment() {
     private lateinit var etSignInPasswordUser: EditText
     private lateinit var btnSignin: Button
     private lateinit var auth: FirebaseAuth
-    private var count = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -10,7 +10,6 @@ import com.google.firebase.auth.FirebaseAuth
 class SignInSignUpActivity : AppCompatActivity() {
     private val SignInFragment = SignInFragment()
     private val fragmentManager = supportFragmentManager
-    private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
