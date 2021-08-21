@@ -48,5 +48,7 @@
     <string name="logout_success">Logout berhasil</string>
     <string name="no">Tidak</string>
     <string name="colorPickerButton">Tombol Color Picker</string>
+    <string name="username">Username</string>
+    <string name="email">username@email.com</string>
 
 </resources>
