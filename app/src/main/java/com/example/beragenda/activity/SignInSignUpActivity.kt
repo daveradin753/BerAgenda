@@ -1,5 +1,6 @@
 package com.example.beragenda.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -34,10 +35,5 @@ class SignInSignUpActivity : AppCompatActivity() {
         }
 
     }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
-
 
 }
