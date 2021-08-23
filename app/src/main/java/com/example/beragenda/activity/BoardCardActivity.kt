@@ -27,7 +27,7 @@ class BoardCardActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardCardBinding
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     private lateinit var tvSelectedBoardTitle: TextView
-    private lateinit var btnBoardCardDialog: ImageView
+//    private lateinit var btnBoardCardDialog: ImageView
     private lateinit var database : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class BoardCardActivity : AppCompatActivity() {
         database = Firebase.firestore
 
         tvSelectedBoardTitle = findViewById(R.id.tvSelectedBoardTitle)
-        btnBoardCardDialog = findViewById(R.id.btnBoardCardDialog)
+//        btnBoardCardDialog = findViewById(R.id.btnBoardCardDialog)
 
         val project_name = intent.getStringExtra("project_name")
         val board_id = intent.getStringExtra("board_id")
@@ -63,40 +63,40 @@ class BoardCardActivity : AppCompatActivity() {
             finish()
         }
 
-        btnBoardCardDialog.setOnClickListener {
-            val popupMenu: PopupMenu = PopupMenu(this, btnBoardCardDialog)
-
-            popupMenu.inflate(R.menu.board_card_menu)
-            popupMenu.setOnMenuItemClickListener { items ->
-                when(items.itemId) {
-//                    R.id.delete_all_card -> {
+//        btnBoardCardDialog.setOnClickListener {
+//            val popupMenu: PopupMenu = PopupMenu(this, btnBoardCardDialog)
 //
-//                        //delete all board V
-//
-//                        database.collection("boards")
-//                            .get()
-//                            .addOnSuccessListener { result ->
-//                                for (document in result) {
-//                                    val docId=document.id
-//                                    database.collection("boards").document(docId)
-//                                        .delete()
-//                                    Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
-//                                }
-//                            }
-//                            .addOnFailureListener { exception ->
-//                                Toast.makeText(this, "Delete all card has failed!", Toast.LENGTH_SHORT).show()
-//                            }
-//
+//            popupMenu.inflate(R.menu.board_card_menu)
+//            popupMenu.setOnMenuItemClickListener { items ->
+//                when(items.itemId) {
+////                    R.id.delete_all_card -> {
+////
+////                        //delete all board V
+////
+////                        database.collection("boards")
+////                            .get()
+////                            .addOnSuccessListener { result ->
+////                                for (document in result) {
+////                                    val docId=document.id
+////                                    database.collection("boards").document(docId)
+////                                        .delete()
+////                                    Toast.makeText(this, "All card has been deleted!", Toast.LENGTH_SHORT).show()
+////                                }
+////                            }
+////                            .addOnFailureListener { exception ->
+////                                Toast.makeText(this, "Delete all card has failed!", Toast.LENGTH_SHORT).show()
+////                            }
+////
+////                    }
+//                    R.id.members -> {
+//                        Toast.makeText(this, "Open all members on this board!", Toast.LENGTH_SHORT).show()
 //                    }
-                    R.id.members -> {
-                        Toast.makeText(this, "Open all members on this board!", Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-                true
-            }
-            popupMenu.show()
-        }
+//
+//                }
+//                true
+//            }
+//            popupMenu.show()
+//        }
 
         val bundle = Bundle()
         bundle.putString("board_id", board_id)
