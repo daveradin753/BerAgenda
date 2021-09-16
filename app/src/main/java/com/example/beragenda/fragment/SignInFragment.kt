@@ -118,7 +118,4 @@ class SignInFragment : Fragment() {
         Log.d("SIGN IN", "Reload account success!")
     }
 
-    companion object {
-
-    }
 }

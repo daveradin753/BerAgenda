@@ -1,6 +1,5 @@
 package com.example.beragenda.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -14,8 +13,6 @@ import androidx.fragment.app.Fragment
 import com.example.beragenda.R
 import com.example.beragenda.model.Users
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

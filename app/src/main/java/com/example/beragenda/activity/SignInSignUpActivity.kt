@@ -1,8 +1,6 @@
 package com.example.beragenda.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.beragenda.R
 import com.example.beragenda.fragment.SignInFragment
@@ -15,9 +13,6 @@ class SignInSignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin_signup)
-
-//        actionBar?.hide()
-//        supportActionBar?.hide()
 
         fragmentManager.beginTransaction().apply {
             replace(R.id.flSigninSignup, SignInFragment)

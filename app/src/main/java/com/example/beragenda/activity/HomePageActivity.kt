@@ -1,9 +1,7 @@
 package com.example.beragenda.activity
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +10,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -25,7 +22,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.example.beragenda.R
 import com.example.beragenda.adapter.BoardCustomAdapter
 import com.example.beragenda.model.Boards
@@ -33,12 +29,10 @@ import com.example.beragenda.model.Users
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import org.w3c.dom.Text
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -130,18 +124,6 @@ class HomePageActivity : AppCompatActivity() {
         val itemId = item.itemId
 
         when (itemId) {
-
-//            R.id.iconSearch -> {
-//                Toast.makeText(applicationContext, "Search Toolbar Clicked", Toast.LENGTH_SHORT)
-//                        .show()
-//            }
-//            R.id.iconNotification -> {
-//                Toast.makeText(
-//                        applicationContext,
-//                        "Notification Toolbar Clicked",
-//                        Toast.LENGTH_SHORT
-//                ).show()
-//            }
             R.id.logOut -> {
                 val builder = AlertDialog.Builder(this)
                 val uid = auth.currentUser?.uid
@@ -219,11 +201,6 @@ class HomePageActivity : AppCompatActivity() {
                     val list: List<String> = listOf(document.get("user_id").toString())
                     val imageURL = document.getString("board_imageURL").toString()
                     val board_hex_color = document.getString("board_hex_color").toString()
-//                    val test = document.data
-//                    val project_name = test.get("project_name")
-
-//                    Log.e("Test", "$project_name")
-//                    Log.d("DATA BOARD", "Succesfully fetched data board!")
                     dataBoards.add(Boards(project_name, board_id, list, imageURL, board_hex_color))
 
                     val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

@@ -1,22 +1,17 @@
 package com.example.beragenda.activity
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.media.Image
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.example.beragenda.R
 import com.example.beragenda.model.Boards
@@ -142,7 +137,6 @@ class AddBoardActivity : AppCompatActivity() {
                     ivProfilePictureAddBoard.load(imageurl)
                 }
             }
-            // set gallery image to image view
         }
     }
 
